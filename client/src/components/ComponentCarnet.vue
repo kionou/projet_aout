@@ -1,0 +1,105 @@
+<template>
+   <div class="carnet">
+           
+            <div class="text">
+                <p>Carnet de Mohamed</p>
+                <p>Nee en 2008(13 ans 8mois)</p>
+            </div>
+         <a href="vaccin.html">
+        <div class="cve">
+           <span>Mohamed</span>
+           <p>Carnet de vaccination</p>
+        </div>
+         </a>
+       
+        </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style lang="css" scoped>
+.carnet{
+    border: solid 1px #B3B3B3;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.carnet .text{
+    margin-bottom: 20px;
+    /* border: 1px solid red; */
+    padding: 20px 0;
+    font-size: 40px;
+}
+.carnet .cve{
+    margin: 7px;
+    padding: 0;
+    width: 145px;
+    height: 220px;
+    vertical-align: top;
+    float: left;
+    border: solid 1px #CCC594;
+    border-radius: 10px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    background-color: #FFF8C7;
+    box-shadow: 3px 3px #eee, 3px 3px 0 1px #ccc594;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+
+div.cve:hover {
+    background-color: #ffff8b;
+}
+.cve p{
+    border: 1px solid #fff;
+    padding: 20px 5px;
+    text-align: center;
+    margin-top: 25px;
+    padding: 15px 5px;
+    color: #fff;
+    background-color: rgb(255, 31, 31);
+}
+
+@media (max-width: 940px){
+
+.carnet .text {
+    font-size: 30px;
+}
+
+}
+
+@media (max-width: 700px){
+   
+   
+    .carnet{
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+        justify-content: center;
+    }
+     .carnet .text{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 378px){
+       
+    .carnet .text {
+        font-size: 10px;
+    }
+        
+}
+
+</style>
