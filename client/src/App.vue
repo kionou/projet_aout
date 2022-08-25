@@ -3,12 +3,11 @@
   <router-view/>
 </template>
 <script >
-  import ComponentNavbar from './components/ComponentNavbar';
 
 export default{
   name:"App",
   components:{
-    ComponentNavbar,
+  
    
 
   }

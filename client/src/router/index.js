@@ -23,15 +23,36 @@ const routes = [
     component: () => import( '../views/SignView.vue')
   },
   {
-    path: '/carnet',
+    path: '/carnet/:id',
     name: 'carnet',
-    component: () => import( '../views/CarnetView.vue')
+    component: () => import( '../views/CarnetView.vue'),
+    props:true
   },
   {
     path: '/compte',
     name: 'compte',
     component: () => import( '../views/CompteView.vue')
   },
+  {
+    path: '/maladie',
+    name: 'maladie',
+    component: () => import( '../views/MaladieView.vue')
+  },
+  {
+    path: '/listeVaccin',
+    name: 'listeVaccin',
+    component: () => import( '../views/ListeVaccin.vue')
+  },
+  {
+    path: '/ajouterVaccin',
+    name: 'ajouterVaccin',
+    component: () => import( '../views/AjouterVaccin.vue')
+  },
+  {
+    path: '/detailMaladie',
+    name: 'detailMaladie',
+    component: () => import( '../views/DetailMaladie.vue')
+  }
  
 ]
 

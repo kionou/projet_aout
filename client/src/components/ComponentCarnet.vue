@@ -5,18 +5,30 @@
                 <p>Carnet de Mohamed</p>
                 <p>Nee en 2008(13 ans 8mois)</p>
             </div>
-         <a href="vaccin.html">
-        <div class="cve">
+         
+        <div class="cve" @click="redirect">
            <span>Mohamed</span>
            <p>Carnet de vaccination</p>
         </div>
-         </a>
-       
+        
+     
         </div>
 </template>
 
 <script>
 export default {
+    name:'ComponentCarnet',
+    
+    data() {
+        return {
+            
+        }
+    },
+    methods:{
+        redirect(){
+            this.$router.push({path:'/listeVaccin'})
+        }
+    }
 
 }
 </script>
@@ -61,6 +73,7 @@ export default {
 
 div.cve:hover {
     background-color: #ffff8b;
+    cursor: pointer;
 }
 .cve p{
     border: 1px solid #fff;

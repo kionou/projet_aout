@@ -1,46 +1,41 @@
 <template>
-    <div class="container">
+   <div class="container">
         <div class="content">
-            <div class="header">
-               <ul>
+          <div class="header">
+             <ul>
                 <li @click="carnet">carnet</li>
                 <li @click="compte">Mon Compte</li>
                 <li @click="maladie">Maladie</li>
-               </ul>
-           </div>
-           <div class="compte">
-            <div class="compte-header">
-                <p>Gestion du compte</p>
+             </ul>
+         </div>
+         
+         <div class="vaccination">
+            <h5 class="title">
+                Maladies à prévention vaccinale
+               </h5>
+            <div class="cadre-vaccin">
+                <div class="vaccin-content">
+                    <p @click="redirect">Zona</p>
+                 </div>
+                 <div class="vaccin-content">
+                     <a href="">Zona</a>
+                 </div>
             </div>
-            <table class="tableStd" style="max-width:600px;width: 98%;">
-	
-                <tr class="titre"><td colspan="3">Paramètres du compte</td></tr>
-        
-    
-            <tr><td>Nom</td><td style="text-align:left;">Kionou</td></tr>
-            <tr><td>prenom</td><td style="text-align:left;">mamadou</td></tr>
-            <tr><td>Email</td><td style="text-align:left;"><span style="font-family:courier new; font-size:1.2em">Kiopfkqhf@d.com</span></td></tr>	
-            <tr><td>Numero</td><td>07569869787T</td></tr>
-            <tr><td>Date de naissance</td><td>29/98/2989</td></tr>
-            <tr><td>Mot de passe</td><td>*******</td></tr>
-          
-                
             
-        </table>
-        <div class="btn">
-            <button>modifier</button>
+            
+            
+      
+         </div>
         </div>
-           </div>
-          </div>
     </div>
 </template>
 
 <script>
 export default {
-    name:"ComponentCompte",
-    methods: {
-         carnet(){
-            this.$router.push({path:"/carnet/:id"})
+         name:"Componentmaladie",
+    methods:{
+        carnet(){
+            this.$router.push({path:"/carnet/:1"})
         },
         compte(){
             this.$router.push({path:"/compte"})
@@ -48,20 +43,15 @@ export default {
         maladie(){
             this.$router.push({path:"/maladie"})
         },
+         redirect(){
+            this.$router.push({path:"/detailMaladie"})
+        },
     }
-    
 
 }
 </script>
 
 <style lang="css" scoped>
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .container {
     display: flex;
     flex-direction: column;
@@ -69,14 +59,13 @@ export default {
     align-items: center;
     border: 1px solid red;
     width: 100%;
-    height: 100vh;
+    height: auto;
     padding: 10px;
 }
-
 .content{
     width: 50%;
     height: 80vh;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -115,67 +104,54 @@ export default {
     border: 1px solid rgb(15,142,240);
     cursor: pointer;
 }
-.compte{
+
+.content{
+    width: 50%;
+    height:auto;
+    /* border: 1px solid black; */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.content .title{
+    text-align: center;
+    padding: 20px;
+    font-size: 2em;
+}
+.vaccination{
     border: solid 1px #B3B3B3;
-    height: 70vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    padding-top: 10px;
 }
-
-.compte .compte-header{
-    border: 1px solid black;
+.vaccination .cadre-vaccin{
     width: 100%;
+    height: 100vh;
+    /* border: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+.vaccination .vaccin-content{
+    border: 1px solid rgb(15, 142, 240);
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    width: 98%;
     text-align: center;
-    padding: 10px;
-    font-size: 25px;
-}
+    font-size: 30px;
+    margin-bottom: 10px;
 
-
-
-.tableStd {
-    width: 97%;
-    margin: 20px auto 15px auto;
-    border-collapse: collapse;
 }
-
-.tableStd tr.titre {
-    color: #F8F8F8;
-    background-color: #989898;
-}
-.tableStd td {
-    padding: 8px;
-    font-size: 1em;
-    font-family: arial;
-    border-bottom: solid 1px #D8D8D8;
-}
-.tableStd tr.titre {
-    color: #F8F8F8;
-    background-color: #989898;
-}
-.tableStd tr {
-    background-color: #E6E6E6;
-}
-
-button {
-    width: 9rem;
-    height: 3rem;
-    margin-top: 25px;
-    text-align: center;
-    border: none;
-    background-color: rgb(15, 142, 240) ;
-    color: white;
-    border-radius: 5px;
-    font-size: 23px;
-}
-
-button:hover {
-    background-color: white;
-    color: rgb(15, 142, 240) ;
-    border: 1px solid rgb(15, 142, 240) ;
+.vaccination .vaccin-content p{
+    text-decoration: none;
+    color: rgb(15, 142, 240);
     cursor: pointer;
 }
 
@@ -183,6 +159,9 @@ button:hover {
 @media (max-width: 940px){
     .content {
         width: 70%;
+    }
+    .content .title{
+        font-size: 1.5em;
     }
  
 }
@@ -232,10 +211,13 @@ button:hover {
         background-color: #fff;
         color: rgb(15, 142, 240);
     }
+
+    .content .title {
+         font-size: 1em;
+    }
    
 
 }
     
-
 
 </style>

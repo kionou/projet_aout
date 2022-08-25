@@ -16,6 +16,7 @@
                 <h1>INSCRIPTION</h1>
                 <p>Inscrivez vous pour beneficier de nos produits.</p>
             </div>
+             <p class="message">{{message}}</p>
                    
                     <form  >
                         <div class="name">
@@ -97,6 +98,7 @@ export default {
            
               v$:useVuelidate(),
               revele:false,
+              message:''
 
 
            
@@ -157,7 +159,7 @@ export default {
             // this.v$.$validate()
             this.v$.$touch()
             if (this.v$.$errors.length == 0 ) {
-                // this.revele = !this.revele
+               
              let   DataUser={
                     nom:this.nom,
                     prenom:this.prenom,
@@ -166,23 +168,34 @@ export default {
                     date_naissance:this.date_naissance,
                     password:this.password
                 }
+                  axios.post('http://localhost:3000/users/userpost',DataUser)
+                 .then((response) => {
+                    console.log(response)
+                    if (response.data.alert) {
+                        this.message=response.data.alert    
+                    }else{
+                       
+                         this.revele = !this.revele
+                    }
+
+                 })
                 
-                axios.get('http://localhost:3000/users/userget')
-                .then((response) =>{
-                     console.log('messagess',response.data)
-                 const user = response.data.filter(el=> el.email === DataUser.email)
+                // axios.get('http://localhost:3000/users/userget')
+                // .then((response) =>{
+                //      console.log('messagess',response.data)
+                //  const user = response.data.filter(el=> el.email === DataUser.email)
                     
-                     if (user == "") {
-                           console.log('ok');
-                          axios.post('http://localhost:3000/users/userpost',DataUser)
-                         .then((response) => console.log(response))
+                //      if (user == "") {
+                //            console.log('ok');
                         
-                     } else {
-                        console.log('erreur');
-                        return 
+                //          
                         
-                     }
-                })
+                //      } else {
+                //         console.log('erreur');
+                //         this.message='Email existe déjà '
+                        
+                //      }
+                // })
 
                
 
@@ -236,7 +249,7 @@ form {
     align-items: center;
     padding: 18px;
 }
-small{
+small ,.message{
     color: #f8001b;
 }
 

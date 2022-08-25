@@ -4,51 +4,103 @@
                     <div class="texte">
                         <h2>CONNEXION</h2>
                     </div>
-                  
-                    <form action="" method="post">
+                            <p class="message">{{message}}</p>
+                    <form >
                     <div class="input-form">
-                          
-                        <input type="email" class="input" name="email" placeholder=" ">
+                           <small v-if="v$.email.$error">{{v$.email.$errors[0].$message}} </small>
+                        <input type="email" class="input" name="email" placeholder=" " v-model="email">
                         <label for="email">Adresse Email</label>
                       
                     </div>
                     <div class="input-form">
-                       
-                        <input type="password" class="input" name="password" placeholder=" ">
+                        <small v-if="v$.password.$error">{{v$.password.$errors[0].$message}} </small>
+                        <input type="password" class="input" name="password" placeholder=" " v-model="password">
                         <label for="password">Mot de passe</label>
                    
                     </div>
-                    <div class="mot-passe">
-                    <a class="password" href="#">Mot de passe oublié ?</a>
-                    </div>
-                    <button >Connecter</button>
+                 
+                    <button  @click.prevent="submit">Connecter</button>
                     </form>
                     <div class="texte">
                      <p>Tu n'as pas encore de compte ? <span class="sanp" @click="redirect">Créer un compte</span>  </p>
                     </div>
         </div>
 
-        <div class="Container">
-            <h1>MOT DE PASSE OUBLIE ?</h1>
-            <p>Entrez l'email que vous avez utilisé pour créer votre compte.Vous recevrez un lien pour réinitialiser votre mot de passe.</p>
-            <form action="/passwordOublie" method="post">
-                <input type="email" id="input" name="email" placeholder="Entrez votre Adresse Email">
-                 <button class="btnPassword">ENVOYER</button>
-
-            </form>
-        </div>
+   
     </div> 
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core'
+import { required , email , minLength ,minValue , maxLength ,maxValue} from '@vuelidate/validators'
+import {require, lgmin,lgmax,ValidEmail} from '../functions/rules'
+
+
+import axios from 'axios'
 
 export default{
     name:"ComponentLogin",
+     data(){
+        return{
+
+        email:'',
+        password:'',
+        v$:useVuelidate(),
+        message:''
+   
+       }
+    },
+    validations: {
+        
+             
+          
+             email:{
+               require,
+                ValidEmail
+            },
+            password:{
+              require,
+                lgmin:lgmin(6),
+                lgmax:lgmax(12)
+         
+                
+            },
+    },
     methods:{
         redirect(){
             this.$router.push({ path: '/sign'})
+        },
+        submit(){
+            
+            // this.v$.$validate()
+            this.v$.$touch()
+            if (this.v$.$errors.length == 0 ) {
+                // this.revele = !this.revele
+             let   DataUser={
+                    email:this.email,
+                    password:this.password
+                }
+
+                   axios.post('http://localhost:3000/users/userconnexion',DataUser)
+                  .then((response) => {
+                    console.log('message',response.data.user.id)
+                    
+
+                    if (response.data.alert) {
+                        
+                        this.message=response.data.alert
+                        
+                    }else{
+                        this.$router.push({path:`/carnet/${response.data.user.id}`})
+                    }
+                  
+                  })
+                
+            }
         }
-    }
+        
+    },
+   
 }
 </script>
 
@@ -87,6 +139,9 @@ export default{
     padding: 10px;
     /* display: none; */
 
+}
+small ,.message{
+    color: #f8001b;
 }
 .Container {
     position: absolute;

@@ -1,7 +1,8 @@
 <template>
   <ComponentNavbar/>
-
-  <ComponentContainer/>
+ <p>{{id}}</p>
+  <ComponentContainer id="id"/>
+ 
 </template>
 
 <script>
@@ -10,10 +11,17 @@ import ComponentContainer from '../components/ComponentContainer.vue';
 
 export default {
     name:"CarnetView",
+    props:['id'],
     components:{
         ComponentNavbar,
         ComponentContainer
-    }
+    },
+    data() {
+      return {
+       
+      }
+    },
+  
 }
 </script>
 

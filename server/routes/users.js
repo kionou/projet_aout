@@ -6,6 +6,8 @@ var router = express.Router();
 router.post('/userpost', UserControler.PostUser);
 router.get('/userget', UserControler.GetUser);
 router.get('/tokenId/:id',UserControler.ConnexionToken)
+router.post('/userconnexion',UserControler.ConnexionUser)
+
 
 
 module.exports = router;

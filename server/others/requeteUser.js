@@ -32,6 +32,46 @@ const dataUser = class{
       
     }
 
+    static DetailUser=  (into)=>{
+        console.log('innnto',into);
+            return new Promise(async (next)=>{
+               users.findAll({where:{email:into}})
+                .then(resultat=>{
+                console.log('ss',resultat);
+                next({
+                success:resultat
+                })
+            }).catch(err=>{
+                console.log("eee",err);
+                next ({
+                    erreur:err
+                })
+            })
+        })
+      
+      
+    }
+
+    static AfficherUser=  ()=>{
+        
+            return new Promise(async (next)=>{
+               users.findAll()
+                .then(resultat=>{
+                console.log('ss',resultat);
+                next({
+                success:resultat
+                })
+            }).catch(err=>{
+                console.log("eee",err);
+                next ({
+                    erreur:err
+                })
+            })
+        })
+      
+      
+    }
+
 }
 
 

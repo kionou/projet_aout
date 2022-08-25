@@ -1,46 +1,42 @@
 <template>
-    <div class="container">
-        <div class="content">
-            <div class="header">
-               <ul>
+   <div class="container">
+       <div class="content">
+         <div class="header">
+            <ul>
                 <li @click="carnet">carnet</li>
                 <li @click="compte">Mon Compte</li>
                 <li @click="maladie">Maladie</li>
-               </ul>
-           </div>
-           <div class="compte">
-            <div class="compte-header">
-                <p>Gestion du compte</p>
-            </div>
-            <table class="tableStd" style="max-width:600px;width: 98%;">
-	
-                <tr class="titre"><td colspan="3">Paramètres du compte</td></tr>
-        
-    
-            <tr><td>Nom</td><td style="text-align:left;">Kionou</td></tr>
-            <tr><td>prenom</td><td style="text-align:left;">mamadou</td></tr>
-            <tr><td>Email</td><td style="text-align:left;"><span style="font-family:courier new; font-size:1.2em">Kiopfkqhf@d.com</span></td></tr>	
-            <tr><td>Numero</td><td>07569869787T</td></tr>
-            <tr><td>Date de naissance</td><td>29/98/2989</td></tr>
-            <tr><td>Mot de passe</td><td>*******</td></tr>
-          
-                
-            
-        </table>
-        <div class="btn">
-            <button>modifier</button>
+            </ul>
         </div>
-           </div>
-          </div>
+        <div class="carnet">
+            <h5>Ajouter un vaccin</h5>
+            <form action="">
+                <div class="form-content">
+                    <label for="" >Date</label>
+                    <input type="date" >
+                </div>
+                <div class="form-content">
+                    <label for="">Nom du vaccin</label>
+                    <input type="text" >
+                </div>
+
+                <button>Ajouter</button>
+               
+            </form>
+          
+         
+       
+        </div>
+       </div>
     </div>
 </template>
 
 <script>
 export default {
-    name:"ComponentCompte",
-    methods: {
-         carnet(){
-            this.$router.push({path:"/carnet/:id"})
+      name:"ComponentAjouterVaccin",
+    methods:{
+        carnet(){
+            this.$router.push({path:"/carnet"})
         },
         compte(){
             this.$router.push({path:"/compte"})
@@ -49,19 +45,11 @@ export default {
             this.$router.push({path:"/maladie"})
         },
     }
-    
 
 }
 </script>
 
-<style lang="css" scoped>
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+<style>
 .container {
     display: flex;
     flex-direction: column;
@@ -73,19 +61,15 @@ export default {
     padding: 10px;
 }
 
-.content{
+.content {
     width: 50%;
     height: 80vh;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 10px;
     display: flex;
     flex-direction: column;
 }
-.header{
-    border: 1px solid #B3B3B3;
-    padding: 10px;
-    border-radius: 10px;
-}
+
 .header{
     border: 1px solid #B3B3B3;
     padding: 10px;
@@ -115,9 +99,11 @@ export default {
     border: 1px solid rgb(15,142,240);
     cursor: pointer;
 }
-.compte{
+
+
+.carnet {
     border: solid 1px #B3B3B3;
-    height: 70vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,39 +111,41 @@ export default {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
-.compte .compte-header{
-    border: 1px solid black;
-    width: 100%;
-    text-align: center;
+h5{
+    font-size: 20px;
+    padding: 15px 0;
+}
+form{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
     padding: 10px;
-    font-size: 25px;
+    max-width: 500px;
+    width: 98%;
+    align-items: center;
 }
 
 
-
-.tableStd {
-    width: 97%;
-    margin: 20px auto 15px auto;
-    border-collapse: collapse;
+.form-content  {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+    align-items: center;
 }
-
-.tableStd tr.titre {
-    color: #F8F8F8;
-    background-color: #989898;
+label{
+    font-size: 18px;
 }
-.tableStd td {
+input{
+    max-width: 400px;
+    width: 98%;
+    height: 2.5rem;
+    border-radius: 8px;
+    /* outline: none; */
     padding: 8px;
-    font-size: 1em;
-    font-family: arial;
-    border-bottom: solid 1px #D8D8D8;
-}
-.tableStd tr.titre {
-    color: #F8F8F8;
-    background-color: #989898;
-}
-.tableStd tr {
-    background-color: #E6E6E6;
+    font-size: 18px;
+    border: 1px solid;
 }
 
 button {
@@ -166,7 +154,7 @@ button {
     margin-top: 25px;
     text-align: center;
     border: none;
-    background-color: rgb(15, 142, 240) ;
+    background-color: rgb(15, 142, 240);
     color: white;
     border-radius: 5px;
     font-size: 23px;
@@ -174,49 +162,57 @@ button {
 
 button:hover {
     background-color: white;
-    color: rgb(15, 142, 240) ;
-    border: 1px solid rgb(15, 142, 240) ;
+    color: rgb(15, 142, 240);
+    border: 1px solid rgb(15, 142, 240);
     cursor: pointer;
 }
 
-
-@media (max-width: 940px){
+@media (max-width: 940px) {
     .content {
         width: 70%;
     }
- 
+
+    .carnet .text {
+        font-size: 30px;
+    }
+
 }
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
     .content {
         width: 100%;
         flex-direction: row;
     }
-    .header ul{
-      flex-direction: column;
-      justify-content: center;
+
+    .header ul {
+        flex-direction: column;
+        justify-content: center;
     }
-    .compte{
+
+    .carnet {
         width: 100%;
         height: auto;
         margin-top: 0;
-        padding: 8px;
+        justify-content: center;
     }
-    .header  {
-        display: flex; 
-        border: none;  
+
+    .header {
+        display: flex;
     }
+
     .header ul li {
         height: 3rem;
         text-align: center;
         display: flex;
         padding: 0;
         margin-top: 10px;
-        background-color: rgb(15,142,240);
+        background-color: rgb(15, 142, 240);
     }
-    .header ul li:nth-child(odd){
-      padding-top: 10px;
-       }
+
+    .header ul li:nth-child(odd) {
+        padding-top: 10px;
+    }
+
     .header ul li a {
         height: 100%;
         width: 100%;
@@ -225,17 +221,28 @@ button:hover {
         background-color: transparent;
         border: none;
     }
-    .header ul li a:hover{
+
+    .header ul li a:hover {
         border: none;
     }
+
     .header ul li:hover {
         background-color: #fff;
         color: rgb(15, 142, 240);
     }
-   
+
+    .carnet .text {
+        font-size: 20px;
+    }
 
 }
-    
 
+@media (max-width: 378px) {
+
+    .carnet .text {
+        font-size: 10px;
+    }
+
+}
 
 </style>
