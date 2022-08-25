@@ -5,6 +5,7 @@ var router = express.Router();
 /* GET users listing. */
 router.post('/userpost', UserControler.PostUser);
 router.get('/userget', UserControler.GetUser);
+router.get('/tokenId/:id',UserControler.ConnexionToken)
 
 
 module.exports = router;

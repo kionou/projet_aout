@@ -153,12 +153,11 @@ export default {
         redirect(){
             this.$router.push({ path: '/login'})
         },
-       async submit(){
+ submit(){
             // this.v$.$validate()
             this.v$.$touch()
             if (this.v$.$errors.length == 0 ) {
-               
-                this.revele = !this.revele
+                // this.revele = !this.revele
              let   DataUser={
                     nom:this.nom,
                     prenom:this.prenom,
@@ -167,11 +166,25 @@ export default {
                     date_naissance:this.date_naissance,
                     password:this.password
                 }
-                axios.post('http://localhost:3000/users/userpost',DataUser)
-                .then((response) => console.log(response))
+                
+                axios.get('http://localhost:3000/users/userget')
+                .then((response) =>{
+                     console.log('messagess',response.data)
+                 const user = response.data.filter(el=> el.email === DataUser.email)
+                    
+                     if (user == "") {
+                           console.log('ok');
+                          axios.post('http://localhost:3000/users/userpost',DataUser)
+                         .then((response) => console.log(response))
+                        
+                     } else {
+                        console.log('erreur');
+                        return 
+                        
+                     }
+                })
 
-           this.message =( await axios.get('http://localhost:3000/users/userget'))
-                .then((response) => console.log('message',response))
+               
 
                 
                 
