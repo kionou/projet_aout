@@ -1,11 +1,9 @@
 <template>
     <header :class="{'scrolld-nav':scrollNav}">
         <nav>
-            <div class="branding">
-                <p>LOGO</p>
-                <font-awesome-icon icon="fas fa-bars" />
-                <i class="fa fa-bars"></i>
-
+            <div class="branding" @click="home">
+                <img src="../assets/lo.png" alt="">
+            
             </div>
             <ul v-show="!mobile" class="navigation">
                 <li>
@@ -18,20 +16,20 @@
                     <router-link class="link" :to="{name:'login'}">Mon carnet</router-link>
                 </li>
             </ul>
-            <div class="icon">
-                <!-- <i @click="toggleMobileNav" v-show="mobile" class="fas fa-bars" :class="{'icon-active':mobileNav}"></i> -->
+            <div class="icon" @click="toggleMobileNav" v-show="mobile" :class="{'icon-active':mobileNav}">
+               <img src="../assets/bare.png" alt="">
             </div>
             <transition name="mobile-nav">
                 <ul v-show="mobileNav" class="dropdown-nav">
                     <li>
-                        <router-link class="link" :to="{name:'home'}">Home</router-link>
-                    </li>
-                    <li>
-                        <router-link class="link" :to="{ name:'about'}">About</router-link>
-                    </li>
-                    <li>
-                        <router-link class="link" :to="{name:''}">Connexion</router-link>
-                    </li>
+                    <router-link class="link" :to="{name:'home'}">Home</router-link>
+                </li>
+                <li>
+                    <router-link class="link" :to="{name:'about'}">About</router-link>
+                </li>
+                <li>
+                    <router-link class="link" :to="{name:'login'}">Mon carnet</router-link>
+                </li>
                 </ul>
             </transition>
         </nav>
@@ -58,6 +56,9 @@ export default {
 
     },
     methods:{
+         home(){
+             this.$router.push({path:'/'})
+        },
         toggleMobileNav(){
             this.mobileNav = !this.mobileNav;
         },
@@ -134,6 +135,13 @@ header{
     .branding{
         display: flex;
         align-items: center;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        img{
+            width: 100%;
+            height: 100%;
+        }
     }
     .navigation{
         display: flex;
@@ -147,15 +155,18 @@ header{
         display: flex;
         align-items: center;
         position: absolute;
-        top: 0;
-        right: 24px;
+           top: 5px;
+            right: -30px;
+            height: 28px;
+            width: 28px;
+            cursor: pointer;
+  
+    }
+    .icon img{
+        width: 100%;
         height: 100%;
     }
-    i{
-        cursor: pointer;
-        font-style: 24px;
-        transition: 0.8s ease all;
-    }
+   
     .icon-active{
         transform: rotate(180deg);
     }

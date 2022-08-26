@@ -2,7 +2,9 @@
   <div class="modal-container" v-if="revele" @click="submit">
    
     <div class="modal">
-        <div class="btn-close"></div>
+        <div class="btn-close" @click="redirect">
+            <img src="../assets/cross-out-mark-674638.png" alt="">
+        </div>
         <div class="image">
             <img src="../assets/clipart1725690.png" alt="">
         </div>
@@ -15,7 +17,12 @@
 <script>
 export default {
     name:"ComponentModal",
-    props:['revele','submit']
+    props:['revele','submit'],
+    methods:{
+    redirect(){
+        this.$router.push({path:'/login'})
+    }
+  }
 
 }
 </script>
@@ -81,6 +88,22 @@ export default {
 .image img{
     width: 100%;
     height: 100%;
+}
+.btn-close{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    color: aqua;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.btn-close img{
+    width: 100%;
+    height: 100%;
+    color: aqua;
 }
 
 

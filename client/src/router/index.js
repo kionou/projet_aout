@@ -39,14 +39,16 @@ const routes = [
     component: () => import( '../views/MaladieView.vue')
   },
   {
-    path: '/listeVaccin',
+    path: '/listeVaccin/:id',
     name: 'listeVaccin',
-    component: () => import( '../views/ListeVaccin.vue')
+    component: () => import( '../views/ListeVaccin.vue'),
+    props:true
   },
   {
-    path: '/ajouterVaccin',
+    path: '/ajouterVaccin/:id',
     name: 'ajouterVaccin',
-    component: () => import( '../views/AjouterVaccin.vue')
+    component: () => import( '../views/AjouterVaccin.vue'),
+    props:true
   },
   {
     path: '/detailMaladie',
@@ -54,9 +56,9 @@ const routes = [
     component: () => import( '../views/DetailMaladie.vue')
   },
   {
-    path: '/ajoutermaladie',
-    name: 'ajoutermaladie',
-    component: () => import( '../views/AjouterMaladie.vue')
+    path: '/ajouter',
+    name: 'ajouter',
+    component: () => import( '../views/AjouterView.vue')
   }
  
  

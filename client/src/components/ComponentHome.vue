@@ -10,7 +10,7 @@
             <p>
                Cliquez sur ce boutton ci dessous pour creer votre carnet gratuitement.
             </p>
-            <button>Inscription</button>
+            <button @click="redirect">Inscription</button>
         </div>
 
     </div>
@@ -21,6 +21,11 @@
 
 export default {
   name: 'ComponentHome',
+  methods:{
+    redirect(){
+        this.$router.push({path:'/sign'})
+    }
+  }
  
   
 }

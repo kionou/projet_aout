@@ -9,6 +9,8 @@
             </ul>
         </div>
         <div class="carnet">
+            <button @click="redirect(id)">Ajouter vaccin</button>
+            
             	
        </div>
     </div>
@@ -18,6 +20,7 @@
 <script>
 export default {
        name:"ComponentListeVaccin",
+       props:['id'],
     methods:{
         carnet(){
             this.$router.push({path:"/carnet/:id"})
@@ -27,6 +30,9 @@ export default {
         },
         maladie(){
             this.$router.push({path:"/maladie"})
+        },
+         redirect(){
+            this.$router.push({path:`/ajouterVaccin/${this.id}`})
         },
     }
 

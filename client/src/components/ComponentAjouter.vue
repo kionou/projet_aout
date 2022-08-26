@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+ <div class="container">
        <div class="content">
          <div class="header">
             <ul>
@@ -12,15 +12,20 @@
             <h5>Ajouter un vaccin</h5>
             <form action="">
                 <div class="form-content">
-                    <label for="" >Date</label>
-                    <input type="date" >
+                    <label for="" >nom de la maladie</label>
+                    <input type="text" v-model="nom_maladie">
                 </div>
                 <div class="form-content">
-                    <label for="">Nom du vaccin</label>
-                    <input type="text" >
+                    <label for="">Nom du vaccin correspond</label>
+                    <input type="text"  v-model="nom_vaccin">
                 </div>
+                  <div class="form-content">
+                    <label for="">description</label>
+                    <textarea v-model="description" id="" cols="70" rows="30"></textarea>
+                </div>
+                
 
-                <button>Ajouter</button>
+                <button @click.prevent="submit">Ajouter</button>
                
             </form>
           
@@ -29,16 +34,49 @@
         </div>
        </div>
     </div>
+  
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    name:'ComponentAjouterMaladie'
+    name:'ComponentAjouter',
+    data(){
+        return{
+           nom_maladie:'',
+           nom_vaccin:'' ,
+           description:''
+        }
+    },
+
+    methods:{
+        submit(){
+            let Datamaladie ={
+                nom_maladie:this.nom_maladie,
+                nom_vaccin:this.nom_vaccin,
+                description:this.description
+            }
+
+        console.log(Datamaladie);
+        axios.post('http://localhost:3000/maladie/maladiepost',Datamaladie)
+                 .then((response) => {
+                    console.log(response)
+                    // if (response.data.alert) {
+                    //     this.message=response.data.alert    
+                    // }else{
+                       
+                    //      this.revele = !this.revele
+                    // }
+
+                 })
+        }
+    }
 
 }
 </script>
 
 <style lang="css" scoped>
+
 .container {
     display: flex;
     flex-direction: column;
@@ -233,6 +271,5 @@ button:hover {
     }
 
 }
-
 
 </style>

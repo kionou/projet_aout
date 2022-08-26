@@ -6,8 +6,14 @@ var logger = require('morgan');
 var cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var maladieRouter = require('./routes/maladie');
 const sequelize = require('./data/database');
 const  session = require('express-session');
+
+
+const { Sequelize } = require('./models');
+const cat = require('./models/users');
+// const categorie = cat(sequelize,Sequelize).sync({force:true})
 
 
 try {
@@ -35,6 +41,8 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/maladie', maladieRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

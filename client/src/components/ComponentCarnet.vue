@@ -3,10 +3,10 @@
            
             <div class="text">
                 <p>Carnet de {{user.prenom}}</p>
-                <p>Nee en 2008(13 ans 8mois)</p>
+                <p class="date">Nee en 2008(13 ans 8mois)</p>
             </div>
          
-        <div class="cve" @click="redirect">
+        <div class="cve" @click="redirect(user.id)">
            <span>{{user.nom}}</span>
            <p>Carnet de vaccination</p>
         </div>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import  "@/assets/app.js"
 export default {
     name:'ComponentCarnet',
      props:['users'],
@@ -27,7 +28,9 @@ export default {
     },
     methods:{
         redirect(){
-            this.$router.push({path:'/listeVaccin'})
+            this.$router.push({path:`/listeVaccin/${this.users[0].id}`})
+            // this.$router.push({path:`/carnet/${response.data.data.id}`})
+
         }
     }
 

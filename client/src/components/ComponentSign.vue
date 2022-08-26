@@ -50,7 +50,7 @@
                         <div class="name">
                             <div  class="input-form">
                                 <small v-if="v$.date_naissance.$error">{{v$.date_naissance.$errors[0].$message}} </small>
-                                <input type="text" class="input" name="date_naissance" placeholder=" " v-model="date_naissance">
+                                <input type="date" class="input" name="date_naissance" placeholder=" " v-model="date_naissance">
                                 <label for="date_naissance">Date de Naissance</label>
                             </div>
                               <div class="input-form">
@@ -156,6 +156,7 @@ export default {
             this.$router.push({ path: '/login'})
         },
         submit(){
+            console.log('date',this.date_naissance);
             // this.v$.$validate()
             this.v$.$touch()
             if (this.v$.$errors.length == 0 ) {

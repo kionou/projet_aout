@@ -1,6 +1,6 @@
 <template>
 
-   <ComponentAjouterMaladie/>
+ <ComponentAjouterMaladie/>
 </template>
 
 <script>

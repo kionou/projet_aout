@@ -38,7 +38,7 @@ export default{
 
 
 .container{
-  background-color: rgb(113, 251, 210);
+  background-color: rgb(219, 228, 225);
     border: 1px solid red;
     width: 100%;
     height: auto;
