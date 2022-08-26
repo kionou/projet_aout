@@ -155,7 +155,7 @@ export default {
         redirect(){
             this.$router.push({ path: '/login'})
         },
- submit(){
+        submit(){
             // this.v$.$validate()
             this.v$.$touch()
             if (this.v$.$errors.length == 0 ) {

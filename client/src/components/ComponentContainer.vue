@@ -1,6 +1,7 @@
 <template>
    <div class="container">
-      <ComponentContent/>
+      <ComponentContent :users="users"/>
+     
     </div>
 </template>
 
@@ -10,8 +11,14 @@ import ComponentContent from './ComponentContent.vue';
 
 export default {
     name:"CompponentContainer",
+    props:['users'],
     components:{
         ComponentContent,
+    },
+    data(){
+        return{
+            // users:this.user
+        }
     }
 
 }

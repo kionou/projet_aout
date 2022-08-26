@@ -6,7 +6,8 @@
              <ComponentHeader/>
          
         
-       <ComponentCarnet/>
+       <ComponentCarnet :users="users"/>
+     
 
        
        
@@ -20,6 +21,7 @@ import ComponentHeader from './ComponentHeader.vue';
 
 export default {
     name:"ComponenetContent",
+    props:['users'],
     data(){
         return{
           

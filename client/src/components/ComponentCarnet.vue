@@ -1,16 +1,16 @@
 <template>
-   <div class="carnet">
+   <div class="carnet" v-for="user in users" :key="user.id">
            
             <div class="text">
-                <p>Carnet de Mohamed</p>
+                <p>Carnet de {{user.prenom}}</p>
                 <p>Nee en 2008(13 ans 8mois)</p>
             </div>
          
         <div class="cve" @click="redirect">
-           <span>Mohamed</span>
+           <span>{{user.nom}}</span>
            <p>Carnet de vaccination</p>
         </div>
-        
+       
      
         </div>
 </template>
@@ -18,6 +18,7 @@
 <script>
 export default {
     name:'ComponentCarnet',
+     props:['users'],
     
     data() {
         return {
@@ -36,7 +37,7 @@ export default {
 <style lang="css" scoped>
 .carnet{
     border: solid 1px #B3B3B3;
-    height: 50vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;

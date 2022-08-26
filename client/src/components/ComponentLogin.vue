@@ -83,15 +83,14 @@ export default{
 
                    axios.post('http://localhost:3000/users/userconnexion',DataUser)
                   .then((response) => {
-                    console.log('message',response.data.user.id)
+                    console.log('message',response)
                     
 
-                    if (response.data.alert) {
-                        
-                        this.message=response.data.alert
-                        
+                    if (response.data.data) {
+                        this.$router.push({path:`/carnet/${response.data.data.id}`})
+    
                     }else{
-                        this.$router.push({path:`/carnet/${response.data.user.id}`})
+                        this.message=response.data.alert
                     }
                   
                   })

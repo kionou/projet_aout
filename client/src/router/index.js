@@ -52,7 +52,13 @@ const routes = [
     path: '/detailMaladie',
     name: 'detailMaladie',
     component: () => import( '../views/DetailMaladie.vue')
+  },
+  {
+    path: '/ajoutermaladie',
+    name: 'ajoutermaladie',
+    component: () => import( '../views/AjouterMaladie.vue')
   }
+ 
  
 ]
 

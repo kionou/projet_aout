@@ -25,23 +25,30 @@ const UserControler = class{
     }
 
     static ConnexionUser = async(req=request,res=response)=>{
-        console.log('bonjours',req.body);
+
         let user= await dataUser.DetailUser(req.body.email)
-        // console.log("fhj<df<djkffkkbj",user.success);
+
         if (user.success == '') {
             res.send({"alert":"Email ou le Mot de passe est incorrect !"})
-        } 
-        let hash=user.success[0].password;
-        console.log("hashhhhhhh",hash);
-        let password = req.body.password;
-        let passwordUser = bcrypt.compareSync(password,hash);
-        if (passwordUser) {
-            console.log('ojcompris');
-            res.send({"user":user.success[0]})
-            
-        } else {
-         res.send({alert:'Mot de passe incorrect'})
+        }else{
+             let hash=user.success[0].password;
+              let UserData = {
+              id:user.success[0].id,
+              nom:user.success[0].nom,   
+            }
+            let password = req.body.password;
+            let passwordUser = bcrypt.compareSync(password,hash);
+            if (passwordUser) {
+                req.session.user = UserData;
+                console.log('ma session est :',req.session);
+                console.log('ojcompris');
+                res.send({"data": req.session.user})
+                
+            } else {
+            res.send({alert:'Mot de passe incorrect'})
+            }
         }
+       
        
       
 
@@ -68,6 +75,15 @@ const UserControler = class{
             } else {
                 res.send(users.erreur)
             }
+    }
+
+    static CarnetGet = async(req=request,res=response)=>{
+       
+            console.log('yhunkgbb',req.params.id);
+         let user = await dataUser.DetailUserId(req.params.id)
+        res.send({"user":user.success})
+        
+      
     }
 }
 
