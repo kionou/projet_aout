@@ -4,5 +4,14 @@ var router = express.Router();
 MaladieControllers
 /* GET home page. */
 router.post('/maladiepost',MaladieControllers.PostMaladie );
+router.get('/affichemaladie',MaladieControllers.GetMaladie );
+router.get('/affichemaladiedetail/:id',MaladieControllers.GetMaladieDetail );
+router.get('/updatemaladie',MaladieControllers.UpdateMaladie );
+router.delete('/deletemaladie/:id',MaladieControllers.DeleteMaladie );
+
+
+
+
+
 
 module.exports = router;

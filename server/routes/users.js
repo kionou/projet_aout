@@ -4,10 +4,21 @@ var router = express.Router();
 
 /* GET users listing. */
 router.post('/userpost', UserControler.PostUser);
-router.get('/userget', UserControler.GetUser);
-router.get('/tokenId/:id',UserControler.ConnexionToken)
+router.get('/alluser', UserControler.AfficherUserAll);
 router.post('/userconnexion',UserControler.ConnexionUser)
-router.get('/carnet/:id',UserControler.CarnetGet)
+router.get('/tokenId/:id',UserControler.ConnexionToken)
+router.get('/detailuser/:id',UserControler.AfficheDetailUserId)
+router.get('/updateuser',UserControler.UpdateUser)
+router.delete('/deleteuser/:id',UserControler.DeleteUser)
+
+
+
+
+
+
+
+router.get('/userget', UserControler.GetUser);
+
 
 
 

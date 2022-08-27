@@ -27,7 +27,7 @@ export default {
       }
     },
     mounted(){
-         axios.get(`http://localhost:3000/users/carnet/${this.id}`)
+         axios.get(`http://localhost:3000/users/detailuser/${this.id}`)
          .then((response) =>{
             console.log('response',response.data);
             this.users= response.data.user

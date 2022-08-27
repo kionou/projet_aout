@@ -7,6 +7,8 @@ var cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var maladieRouter = require('./routes/maladie');
+var doctorRouter = require('./routes/doctor');
+
 const sequelize = require('./data/database');
 const  session = require('express-session');
 
@@ -42,6 +44,8 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/maladie', maladieRouter);
+app.use('/doctor', doctorRouter);
+
 
 
 // catch 404 and forward to error handler

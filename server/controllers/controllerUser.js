@@ -10,9 +10,8 @@ const bcrypt  = require('bcrypt')
 const UserControler = class{
     static PostUser = async (req=request,res=response)=>{
         
-        let user = await dataUser.DetailUser(req.body.email)
+        let user = await dataUser.DetaillUser(req.body.email)
             if (user.success == "") {
-                res.send({"msg":"ok c'est bon"})
                 let Token =jsonwt.CreerToken(req.body)
                 mailer(req.body.email,Token)
                 
@@ -20,8 +19,6 @@ const UserControler = class{
                 res.send({"alert":"Email existe déjà "})
 
             }
-      
-
     }
 
     static ConnexionUser = async(req=request,res=response)=>{
@@ -48,27 +45,15 @@ const UserControler = class{
             res.send({alert:'Mot de passe incorrect'})
             }
         }
-       
-       
-      
-
-    }
-    static GetUser = async(req=request,res=response)=>{
-        let message = await dataUser.AfficherUser()
-    //    const message = [
-    //     {id:1,"nom":"kionou","prenom":"mamadou","email":"kionoumohaam.0@gmail.com"},
-    //     {id:2,"nom":"konate","prenom":"mohamed","email":"kionoumamadou.0@gmail.com"}
-    //    ]
-       res.send(message)
 
     }
 
-      static ConnexionToken = async(req=request,res=response)=>{
+
+    static ConnexionToken = async(req=request,res=response)=>{
        
             let id = req.params.id;
             let tokenId = jsonwt.VerifierToken(id)   
             let users = await dataUser.InsertionUser(tokenId);
-            // res.send(users)
             if (users.success) {
                 
                 res.send({user:users.success})
@@ -77,13 +62,48 @@ const UserControler = class{
             }
     }
 
-    static CarnetGet = async(req=request,res=response)=>{
+    static AfficheDetailUserId = async(req=request,res=response)=>{
        
-            console.log('yhunkgbb',req.params.id);
+        console.log('yhunkgbb',req.params.id);
          let user = await dataUser.DetailUserId(req.params.id)
-        res.send({"user":user.success})
+        res.send({"user":user.success}) 
+    }
+
+    static AfficherUserAll = async(req=request,res=response)=>{
+       
+         let user = await dataUser.AfficherUserAll()
+         console.log('user',user.success);
+         res.json(user.success)
+    }
+
+    static UpdateUser = async(req=request,res=response)=>{
+       
         
-      
+         let user = await dataUser.UpdateUser(req.body)
+         console.log('user',user.success);
+         res.json(user.success)
+    }
+
+    static DeleteUser = async(req=request,res=response)=>{
+       
+        console.log('yhunkgbb',req.params.id);
+         let user = await dataUser.DeleteUser(req.params.id)
+         console.log('user',user.success);
+         res.json(user.success)
+    }
+
+
+
+
+
+    static GetUser = async(req=request,res=response)=>{
+        let message = await dataUser.AfficherUser()
+    //    const message = [
+    //     {id:1,"nom":"kionou","prenom":"mamadou","email":"kionoumohaam.0@gmail.com"},
+    //     {id:2,"nom":"konate","prenom":"mohamed","email":"kionoumamadou.0@gmail.com"}
+    //    ]
+       res.send(message)
+
     }
 }
 
