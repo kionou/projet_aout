@@ -2,8 +2,7 @@ const { request ,response } = require("express");
 const jsonwt = require("../middleware/jsonwebtoken");
 const { mailer } = require('../middleware/nodemailer');
 const dataUser = require("../others/requeteUser");
-const bcrypt  = require('bcrypt')
-
+const bcrypt  = require('bcrypt');
 
 
 
@@ -29,17 +28,13 @@ const UserControler = class{
             res.send({"alert":"Email ou le Mot de passe est incorrect !"})
         }else{
              let hash=user.success[0].password;
-              let UserData = {
-              id:user.success[0].id,
-              nom:user.success[0].nom,   
-            }
+           
             let password = req.body.password;
             let passwordUser = bcrypt.compareSync(password,hash);
             if (passwordUser) {
-                req.session.user = UserData;
-                console.log('ma session est :',req.session);
-                console.log('ojcompris');
-                res.send({"data": req.session.user})
+                // console.log("suuu",user.success[0].dataValues)
+              let Token = jsonwt.CreerToken(user.success[0].dataValues)
+                res.send({"data": Token})
                 
             } else {
             res.send({alert:'Mot de passe incorrect'})
@@ -63,9 +58,10 @@ const UserControler = class{
     }
 
     static AfficheDetailUserId = async(req=request,res=response)=>{
-       
-        console.log('yhunkgbb',req.params.id);
-         let user = await dataUser.DetailUserId(req.params.id)
+       let token = req.headers.token
+       let verifier = jsonwt.VerifierToken(token)
+        console.log('yhunkgbb',verifier.id);
+         let user = await dataUser.DetailUserId(verifier.id)
         res.send({"user":user.success}) 
     }
 

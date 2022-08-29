@@ -23,7 +23,7 @@ const routes = [
     component: () => import( '../views/SignView.vue')
   },
   {
-    path: '/carnet/:id',
+    path: '/carnet',
     name: 'carnet',
     component: () => import( '../views/CarnetView.vue'),
     props:true
@@ -39,7 +39,7 @@ const routes = [
     component: () => import( '../views/MaladieView.vue')
   },
   {
-    path: '/listeVaccin/:id',
+    path: '/listeVaccin',
     name: 'listeVaccin',
     component: () => import( '../views/ListeVaccin.vue'),
     props:true

@@ -26,14 +26,21 @@ export default {
        
       }
     },
-    mounted(){
-         axios.get(`http://localhost:3000/users/detailuser/${this.id}`)
+    created(){
+      // if (localStroge.getItem('token') ) {
+      //   this.$router.push({path:'/login'})
+        
+      // }
+    },
+      mounted(){
+         axios.get('http://localhost:3000/users/detailuser',{ headers: {token : localStorage.getItem('token')}})
          .then((response) =>{
             console.log('response',response.data);
-            this.users= response.data.user
+             this.users= response.data.user
            
          })
     }
+   
   
 }
 </script>

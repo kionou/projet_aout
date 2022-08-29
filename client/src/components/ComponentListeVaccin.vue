@@ -9,7 +9,30 @@
             </ul>
         </div>
         <div class="carnet">
-            <button @click="redirect(id)">Ajouter vaccin</button>
+            <button @click="redirect">Ajouter vaccin</button>
+            <div class="table-container">
+                <h1 class="heading">
+                    liste des vaccins
+                </h1>
+                <table class="table">
+                        <thead>
+                            <tr>
+                                <th>date de l'acte</th>
+                                <th>Vaccin utilisé</th>
+                                <th>Protège contre</th>
+                                <th>Vaccin effectué par</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="date de l'acte">12/12/2012</td>
+                                <td data-label="Vaccin utilisé">Astrazeneca</td>
+                                <td data-label="Protège contre">Covid-19</td>
+                                <td data-label="Vaccin effectué par">Kouassi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
             
             	
        </div>
@@ -42,6 +65,7 @@ export default {
 <style lang="css" scoped>
 
 .container {
+    background: rgb(100, 98, 98);
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -101,58 +125,78 @@ export default {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
-table.tablesorter {
-    text-align: left;
+.table-container{
+    padding: 0 10%;
+    margin: 40px auto 0;
 }
 
-.vaccins {
-    border: solid 1px #9F9F9F;
+.heading{
+    font-size: 40px;
+    text-align: center;
+    color: #f1f1f1;
+    margin-bottom: 40px;
+}
+.table{
+    width: 100%;
     border-collapse: collapse;
 }
-.vaccins tr.gris {
-    background-color: #A5A5A5;
+.table thead{
+    background-color: #ee2828;
 }
-vaccins th,
-.vaccins td {
-    border: solid 1px #FFFFFF;
-    padding: 10px;
+
+.table thead tr thead{
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing:0.35px;
+    color:#fff;
+    opacity:1;
+    padding:12px;
+    vertical-align: top;
+    border:1px solid #dee2e685;
+
 }
-.vaccins th,
-.newuser th,
-.user_update th,
-.table th,
-.vaccins td,
-.newuser td,
-.user_update td,
-.table td {
+
+.table tbody tr td{
+    font-size: 14px;
+    letter-spacing: 0.35px;
+    font-weight: normal;
+    color: #f1f1f1;
+    background-color: #3c3f44;
     padding: 8px;
-    font-size: 1em;
-    font-family: arial;
+    text-align: center;
+    border: 1px solid #dee2e685;
 }
-table_textref tr.titre,
-.vaccins tr.titre {
-    color: #ffffff;
-    /* background-color: #3333FF; */
-    font-weight: bold;
+
+@media (max-width: 768px) {
+    .table thead{
+        display: none;
+    }
+    .table .table tbody,.table tr,.table td{
+        display: block;
+        width: 100%;
+    }
+    .table tr{
+        margin-bottom: 15px;
+    }
+    .table tbody tr td{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .table td:before{
+        content:attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: 600;
+        font-size:14px;
+        text-align:left
+    }
+    
 }
-l,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-blockquote {
-    font-family: inherit;
-}
+
+
+
 
 </style>

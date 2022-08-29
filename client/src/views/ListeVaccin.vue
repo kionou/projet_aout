@@ -1,7 +1,7 @@
 <template>
   <ComponentNavbar/>
-{{id}}
-  <ComponentListeVaccin :id="id"/>
+
+  <ComponentListeVaccin />
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
 
     },
     data(){
-      id:this.id
+      
     }
 
 }

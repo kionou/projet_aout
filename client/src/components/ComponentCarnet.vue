@@ -6,7 +6,7 @@
                 <p class="date">Nee en 2008(13 ans 8mois)</p>
             </div>
          
-        <div class="cve" @click="redirect(user.id)">
+        <div class="cve" @click="redirect">
            <span>{{user.nom}}</span>
            <p>Carnet de vaccination</p>
         </div>
@@ -28,11 +28,12 @@ export default {
     },
     methods:{
         redirect(){
-            this.$router.push({path:`/listeVaccin/${this.users[0].id}`})
+            this.$router.push({path:'/listeVaccin'})
             // this.$router.push({path:`/carnet/${response.data.data.id}`})
 
         }
-    }
+    },
+   
 
 }
 </script>

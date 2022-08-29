@@ -7,7 +7,7 @@ router.post('/userpost', UserControler.PostUser);
 router.get('/alluser', UserControler.AfficherUserAll);
 router.post('/userconnexion',UserControler.ConnexionUser)
 router.get('/tokenId/:id',UserControler.ConnexionToken)
-router.get('/detailuser/:id',UserControler.AfficheDetailUserId)
+router.get('/detailuser',UserControler.AfficheDetailUserId)
 router.get('/updateuser',UserControler.UpdateUser)
 router.delete('/deleteuser/:id',UserControler.DeleteUser)
 

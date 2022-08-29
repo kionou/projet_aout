@@ -7,8 +7,6 @@ const doctors = Doctor(data,Sequelize);
 
 
 
-
-
 const dataDoctor = class{
 
     static InsertionDoctor=  (into)=>{
@@ -34,27 +32,42 @@ const dataDoctor = class{
       
     }
 
-    static DetailDoctor = (intos)=>{
-        console.log("qsdsd",intos);
-        
+        static DetailDoctorEmail=  (into)=>{
+        console.log('innnto',into);
         return new Promise(async (next)=>{
-          
-            const {Op}=require('sequelize');
-            doctors.findAll({
-                where:{
-                    [Op.or]:[
-                        {id:intos},
-                        {email:intos}
-                    ]
-                }
-            }).then(resultat => {
-                console.log('resultat',resultat);
-                next({success:resultat})
-            }).catch(error  =>{
-                console.log('error',error);
-                  next({erreur:error})
-            }) 
+            doctors.findAll({where:{email:into}})
+            .then(resultat=>{
+                console.log('ss',resultat);
+                next({
+                success:resultat
+                })
+            }).catch(err=>{
+                console.log("eee",err);
+                next ({
+                    erreur:err
+                })
+            })
         })
+        
+    }
+
+       static DetailDoctorId=  (into)=>{
+        console.log('innnto',into);
+        return new Promise(async (next)=>{
+            doctors.findAll({where:{id:into}})
+            .then(resultat=>{
+                console.log('ss',resultat);
+                next({
+                success:resultat
+                })
+            }).catch(err=>{
+                console.log("eee",err);
+                next ({
+                    erreur:err
+                })
+            })
+        })
+        
     }
 
     static AfficherDortorAll=  ()=>{
@@ -69,6 +82,35 @@ const dataDoctor = class{
                 next ({erreur:err})
             })
         }) 
+    }
+
+    static UpdateDoctor=  (into)=>{
+        let{id,nom,prenom,email,numero,specialite,centre}=into; 
+            return new Promise(async (next)=>{
+                doctors.update({nom,prenom,email,numero,specialite,centre},
+                    {where :{id}})
+                .then(resultat => {
+                    console.log('resultat',resultat);
+                    next({success:resultat})
+                }).catch(error  =>{
+                    console.log('errorsansimage',error);
+                    next({erreur:error})
+                })
+            })
+    }
+
+    static DeleteDoctor= (into)=>{
+        
+        return new Promise(async (next)=>{
+            doctors.destroy({where:{id:into}})
+            .then(resultat => {
+                console.log('resultat',resultat);
+                next({success:resultat})
+            }).catch(error  =>{
+                console.log('errorsansimage',error);
+                next({erreur:error})
+            })
+        })
     }
 }
 

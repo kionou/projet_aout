@@ -101,7 +101,7 @@ const dataUser = class{
                 next({erreur:error})
             })
         })
-}
+    }
 
 }
 

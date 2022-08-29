@@ -83,11 +83,12 @@ export default{
 
                    axios.post('http://localhost:3000/users/userconnexion',DataUser)
                   .then((response) => {
-                    console.log('message',response)
+                    console.log('message',response.data.data)
                     
 
                     if (response.data.data) {
-                        this.$router.push({path:`/carnet/${response.data.data.id}`})
+                        localStorage.setItem('token',response.data.data)
+                        this.$router.push({path:'/carnet'})
     
                     }else{
                         this.message=response.data.alert
