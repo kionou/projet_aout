@@ -7,9 +7,9 @@
                             <p class="message">{{message}}</p>
                     <form >
                     <div class="input-form">
-                           <small v-if="v$.email.$error">{{v$.email.$errors[0].$message}} </small>
-                        <input type="email" class="input" name="email" placeholder=" " v-model="email">
-                        <label for="email">Adresse Email</label>
+                           <small v-if="v$.pseudo.$error">{{v$.pseudo.$errors[0].$message}} </small>
+                        <input type="text" class="input" name="pseudo" placeholder=" " v-model="pseudo">
+                        <label for="email">Pseudo</label>
                       
                     </div>
                     <div class="input-form">
@@ -21,9 +21,7 @@
                  
                     <button  @click.prevent="submit">Connecter</button>
                     </form>
-                    <div class="texte">
-                     <p>Tu n'as pas encore de compte ? <span class="sanp" @click="redirect">Créer un compte</span>  </p>
-                    </div>
+                   
         </div>
 
    
@@ -33,17 +31,17 @@
 <script>
 import useVuelidate from '@vuelidate/core'
 import { required , email , minLength ,minValue , maxLength ,maxValue} from '@vuelidate/validators'
-import {require, lgmin,lgmax,ValidEmail} from '../functions/rules'
+import {require, lgmin,lgmax} from '../functions/rules'
 
 
 import axios from 'axios'
 
 export default{
-    name:"ComponentLogin",
+    name:"ComponentDoctorLogin",
      data(){
         return{
 
-        email:'',
+        pseudo:'',
         password:'',
         v$:useVuelidate(),
         message:''
@@ -54,9 +52,11 @@ export default{
         
              
           
-             email:{
+             pseudo:{
                require,
-                ValidEmail
+               lgmin:lgmin(7),
+                lgmax:lgmax(8)
+                
             },
             password:{
               require,
@@ -67,28 +67,26 @@ export default{
             },
     },
     methods:{
-        redirect(){
-            this.$router.push({ path: '/sign'})
-        },
+        
         submit(){
             
             // this.v$.$validate()
             this.v$.$touch()
             if (this.v$.$errors.length == 0 ) {
                 // this.revele = !this.revele
-             let   DataUser={
-                    email:this.email,
+             let   DataDoctor={
+                    pseudo:this.pseudo,
                     password:this.password
                 }
 
-                   axios.post('http://localhost:3000/users/userconnexion',DataUser)
+                   axios.post('http://localhost:3000/doctor/doctorconnexion',DataDoctor)
                   .then((response) => {
                     console.log('message',response.data.data)
                     
 
                     if (response.data.data) {
-                        localStorage.setItem('patient',response.data.data)
-                        this.$router.push({path:'/carnet'})
+                        localStorage.setItem('doctor',response.data.data)
+                        this.$router.push({path:'/ajouterVaccin'})
     
                     }else{
                         this.message=response.data.alert

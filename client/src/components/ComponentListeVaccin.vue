@@ -9,7 +9,7 @@
             </ul>
         </div>
         <div class="carnet">
-            <button @click="redirect">Ajouter vaccin</button>
+  
             <div class="table-container">
                 <h1 class="heading">
                     liste des vaccins
@@ -24,12 +24,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr v-for="vaccin in vaccins" :key="vaccin.id">
+                                <td Ref="date" data-label="date de l'acte">{{vaccin.createdAt}}</td>
+                                <td data-label="Vaccin utilisé">{{vaccin.nom}}</td>
+                                <td data-label="Protège contre">{{vaccin.nom_maladie}}</td>
+                               
+                                <td class="doctor" data-label="Vaccin effectué par" v-for="doctor in doctors" :key="doctor.id" @click="redirect">{{doctor.nom}} {{doctor.prenom}}</td>
+                              
+                            </tr>
+                              <!-- <tr>
                                 <td data-label="date de l'acte">12/12/2012</td>
                                 <td data-label="Vaccin utilisé">Astrazeneca</td>
                                 <td data-label="Protège contre">Covid-19</td>
-                                <td data-label="Vaccin effectué par">Kouassi</td>
-                            </tr>
+                                <td data-label="Vaccin effectué par">Kouassi detail</td>
+                            </tr> -->
                         </tbody>
                     </table>
             </div>
@@ -41,9 +49,10 @@
 </template>
 
 <script>
+import '@/assets/app'
 export default {
        name:"ComponentListeVaccin",
-       props:['id'],
+       props:['vaccins','doctors'],
     methods:{
         carnet(){
             this.$router.push({path:"/carnet/:id"})
@@ -55,9 +64,14 @@ export default {
             this.$router.push({path:"/maladie"})
         },
          redirect(){
-            this.$router.push({path:`/ajouterVaccin/${this.id}`})
+            this.$router.push({path:'/doctorinfo'})
         },
-    }
+    
+    },
+    mounted() {
+        console.log('gfsfgsge',this.$refs.date)
+    },
+ 
 
 }
 </script >
@@ -65,7 +79,7 @@ export default {
 <style lang="css" scoped>
 
 .container {
-    background: rgb(100, 98, 98);
+ 
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -77,7 +91,7 @@ export default {
 }
 
 .content {
-    width: 50%;
+    width: 80%;
     height: 80vh;
     border: 1px solid black;
     padding: 10px;
@@ -126,8 +140,9 @@ export default {
     border-bottom-right-radius: 10px;
 }
 .table-container{
-    padding: 0 10%;
+    padding: 0 10px;
     margin: 40px auto 0;
+    width: 100%;
 }
 
 .heading{
@@ -144,7 +159,7 @@ export default {
     background-color: #ee2828;
 }
 
-.table thead tr thead{
+.table thead tr th{
     font-size: 14px;
     font-weight: 600;
     letter-spacing:0.35px;
@@ -165,6 +180,14 @@ export default {
     padding: 8px;
     text-align: center;
     border: 1px solid #dee2e685;
+}
+span{
+    width: 100%;
+}
+.doctor:hover{
+    cursor: pointer;
+    color: #ee2828;
+
 }
 
 @media (max-width: 768px) {

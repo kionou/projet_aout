@@ -5,6 +5,7 @@ var router = express.Router();
 
 
 router.post('/vaccinpost',VaccinControllers.PostVaccin );
+router.get('/detailvaccin/',VaccinControllers.AfficheDetailVaccinUser)
 
 
 module.exports=router

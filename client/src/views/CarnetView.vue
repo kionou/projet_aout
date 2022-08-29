@@ -27,18 +27,29 @@ export default {
       }
     },
     created(){
-      // if (localStroge.getItem('token') ) {
-      //   this.$router.push({path:'/login'})
+      const auth = localStorage.getItem('patient')
+      console.log("authhhh",auth);
+      if (auth === null ) {
+        this.$router.push({path:'/login'})
         
-      // }
+      }
     },
       mounted(){
-         axios.get('http://localhost:3000/users/detailuser',{ headers: {token : localStorage.getItem('token')}})
+      const auth = localStorage.getItem('patient')
+
+        if (auth) {
+          console.log("sfsdfg",auth);
+          axios.get('http://localhost:3000/users/detailuser',{ headers: {patient : localStorage.getItem('patient')}})
          .then((response) =>{
-            console.log('response',response.data);
+             console.log('response',response.data);
              this.users= response.data.user
            
          })
+          
+        }else{
+          console.log('nono');
+        }
+      
     }
    
   

@@ -32,6 +32,7 @@ const dataDoctor = class{
       
     }
 
+
         static DetailDoctorEmail=  (into)=>{
         console.log('innnto',into);
         return new Promise(async (next)=>{
@@ -51,10 +52,29 @@ const dataDoctor = class{
         
     }
 
-       static DetailDoctorId=  (into)=>{
+    static DetailDoctorId=  (into)=>{
         console.log('innnto',into);
         return new Promise(async (next)=>{
             doctors.findAll({where:{id:into}})
+            .then(resultat=>{
+                console.log('ss',resultat);
+                next({
+                success:resultat
+                })
+            }).catch(err=>{
+                console.log("eee",err);
+                next ({
+                    erreur:err
+                })
+            })
+        })
+        
+    }
+
+    static DetailDoctorPseudo=  (into)=>{
+        console.log('innnto',into);
+        return new Promise(async (next)=>{
+            doctors.findAll({where:{pseudo:into}})
             .then(resultat=>{
                 console.log('ss',resultat);
                 next({

@@ -1,7 +1,7 @@
 <template>
   <component-navbar/>
-  <ComponentAjouterVaccin/>
-  {{id}}
+  <ComponentAjouterVaccin :patient="patient" :doctor="doctor"/>
+
 </template>
 
 <script>
@@ -10,12 +10,52 @@ import ComponentNavbar from '@/components/ComponentNavbar.vue';
 import ComponentAjouterVaccin from '@/components/ComponentAjouterVaccin.vue';
 export default {
      name:'AjouterVaccin',
-     props:['id'],
+     props:['patient','doctor'],
     components:{
         ComponentNavbar,
         ComponentAjouterVaccin
 
     },
+    data() {
+      return {
+        patient:'',
+        doctor:''
+      }
+    },
+        created(){
+      const patient = localStorage.getItem('patient')
+      const doctor = localStorage.getItem('doctor')
+      if ((patient && doctor) == null ) {
+        this.$router.push({path:'/doctor'})  
+      }else{
+        this.patient =patient,
+        this.doctor =doctor
+      }
+
+
+
+    },
+
+      // mounted(){
+      // const patient = localStorage.getItem('patient')
+      // const doctor = localStorage.getItem('doctor')
+     
+
+
+        // if ((patient && doctor)) {
+        //   console.log("sfsdfg",auth);
+        //   axios.post('http://localhost:3000/vaccin/vaccinpost',{ headers: {patient : localStorage.getItem('patient')}})
+        //  .then((response) =>{
+        //      console.log('response',response.data);
+        //     //  this.users= response.data.user
+           
+        //  })
+          
+        // }else{
+        //   console.log('nono');
+        // }
+      
+    // }
 
 }
 </script>

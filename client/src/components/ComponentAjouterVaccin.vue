@@ -11,16 +11,21 @@
         <div class="carnet">
             <h5>Ajouter un vaccin</h5>
             <form action="">
+                <!-- <div class="form-content">
+                    <label for="" >Date de l'acte</label>
+                    <input type="date" v-model="so">
+                </div> -->
                 <div class="form-content">
-                    <label for="" >Date</label>
-                    <input type="date" >
+                    <label for="">Vaccin utilisé</label>
+                    <input type="text" v-model="nom" >
                 </div>
-                <div class="form-content">
-                    <label for="">Nom du vaccin</label>
-                    <input type="text" >
+                 <div class="form-content">
+                    <label for="">Lutte contre</label>
+                    <input type="text"  v-model="nom_maladie">
                 </div>
-
-                <button>Ajouter</button>
+                <input type="hidden" v-model="patient">
+                <input type="hidden" v-model="doctor">
+                <button @click.prevent="submit">Ajouter</button>
                
             </form>
           
@@ -32,8 +37,19 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
       name:"ComponentAjouterVaccin",
+      props:['patient','doctor'],
+      data() {
+        return {
+            nom:"",
+            nom_maladie:"",
+            patient:this.patient,
+            doctor:this.doctor
+            
+        }
+      },
     methods:{
         carnet(){
             this.$router.push({path:"/carnet"})
@@ -44,6 +60,36 @@ export default {
         maladie(){
             this.$router.push({path:"/maladie"})
         },
+
+          submit(){
+            
+            // this.v$.$validate()
+            // this.v$.$touch()
+            // if (this.v$.$errors.length == 0 ) {
+                // this.revele = !this.revele
+             let   DataVaccin={
+                    nom:this.nom,
+                    nom_maladie:this.nom_maladie,
+                    id_user:this.patient,
+                    id_doctor:this.doctor
+                }
+
+                   axios.post('http://localhost:3000/vaccin/vaccinpost',DataVaccin)
+                  .then((response) => {
+                    console.log('message',response.data)
+                    
+
+                    if (response.data.data) {
+                       
+                        this.$router.push({path:'/listevaccin'})
+    
+                    }
+                   
+                  
+                  })
+                
+            }
+        // }
     }
 
 }

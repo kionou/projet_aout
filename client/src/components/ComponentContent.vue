@@ -53,8 +53,8 @@ export default {
 
 <style lang="css" scoped>
 .content{
-    width: 50%;
-    height: 80vh;
+    width: 80%;
+    height: auto;
     /* border: 1px solid black; */
     padding: 10px;
     display: flex;

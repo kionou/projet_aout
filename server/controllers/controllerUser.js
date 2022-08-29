@@ -58,9 +58,9 @@ const UserControler = class{
     }
 
     static AfficheDetailUserId = async(req=request,res=response)=>{
-       let token = req.headers.token
+       let token = req.headers.patient
        let verifier = jsonwt.VerifierToken(token)
-        console.log('yhunkgbb',verifier.id);
+        console.log('yhunkgbb',verifier);
          let user = await dataUser.DetailUserId(verifier.id)
         res.send({"user":user.success}) 
     }

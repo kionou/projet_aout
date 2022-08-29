@@ -45,7 +45,7 @@ const routes = [
     props:true
   },
   {
-    path: '/ajouterVaccin/:id',
+    path: '/ajouterVaccin',
     name: 'ajouterVaccin',
     component: () => import( '../views/AjouterVaccin.vue'),
     props:true
@@ -59,6 +59,16 @@ const routes = [
     path: '/ajouter',
     name: 'ajouter',
     component: () => import( '../views/AjouterView.vue')
+  },
+  {
+    path: '/doctor',
+    name: 'doctor',
+    component: () => import( '../views/DoctorLogin.vue')
+  },
+  {
+    path: '/doctorinfo',
+    name: 'doctorinfo',
+    component: () => import( '../views/DoctorInfo.vue')
   }
  
  
