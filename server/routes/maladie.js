@@ -1,7 +1,7 @@
 var express = require('express');
 const MaladieControllers = require('../controllers/ControllerMaladie');
 var router = express.Router();
-MaladieControllers
+
 /* GET home page. */
 router.post('/maladiepost',MaladieControllers.PostMaladie );
 router.get('/affichemaladie',MaladieControllers.GetMaladie );

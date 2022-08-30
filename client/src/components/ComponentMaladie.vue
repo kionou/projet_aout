@@ -13,9 +13,9 @@
             <h5 class="title">
                 Maladies à prévention vaccinale
                </h5>
-            <div class="cadre-vaccin">
+            <div class="cadre-vaccin" v-for="maladie in maladies" :key="maladie.id">
                 <div class="vaccin-content">
-                    <p @click="redirect">Zona</p>
+                    <p @click="redirect">{{maladie.nom}}</p>
                  </div>
                  <div class="vaccin-content">
                      <a href="">Zona</a>
@@ -35,7 +35,7 @@ export default {
          name:"Componentmaladie",
     methods:{
         carnet(){
-            this.$router.push({path:"/carnet/:1"})
+            this.$router.push({path:"/carnet"})
         },
         compte(){
             this.$router.push({path:"/compte"})

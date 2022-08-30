@@ -16,15 +16,17 @@
 	
                 <tr class="titre"><td colspan="3">Paramètres du compte</td></tr>
         
-    
-            <tr><td>Nom</td><td style="text-align:left;">Kionou</td></tr>
-            <tr><td>prenom</td><td style="text-align:left;">mamadou</td></tr>
-            <tr><td>Email</td><td style="text-align:left;"><span style="font-family:courier new; font-size:1.2em">Kiopfkqhf@d.com</span></td></tr>	
-            <tr><td>Numero</td><td>07569869787T</td></tr>
-            <tr><td>Date de naissance</td><td>29/98/2989</td></tr>
+      <div v-for="user in users" :key="user.id">
+
+   
+            <tr><td>Nom</td><td style="text-align:left;">{{user.nom}}</td></tr>
+            <tr><td>prenom</td><td style="text-align:left;">{{user.prenom}}</td></tr>
+            <tr><td>Email</td><td style="text-align:left;"><span style="font-family:courier new; font-size:1.2em">{{user.email}}</span></td></tr>	
+            <tr><td>Numero</td><td>{{user.numero}}</td></tr>
+            <tr><td>Date de naissance</td><td>{{user.date_naissance}}</td></tr>
             <tr><td>Mot de passe</td><td>*******</td></tr>
           
-                
+        </div>    
             
         </table>
         <div class="btn">

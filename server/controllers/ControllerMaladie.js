@@ -11,10 +11,12 @@ const MaladieControllers = class{
     }
 
     static GetMaladie = async (req=request,res=response)=>{
-       
-        let maladie = await dataMaladie.AfficherMaladie()
-        console.log('mama',maladie.success);
-        res.json(maladie.success)
+        if (req.headers.patient) {
+            let maladie = await dataMaladie.AfficherMaladie()
+            console.log('mama',maladie.success);
+            res.send({"maladie":maladie.success})  
+        }
+      
     }
     static GetMaladieDetail = async (req=request,res=response)=>{
        
