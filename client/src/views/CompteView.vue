@@ -1,17 +1,18 @@
 <template>
-  <ComponentNavbar/>
+  <ComponentNavbarConnect/>
   <ComponentCompte :users="users"/>
 </template>
 
 <script>
+import ComponentNavbarConnect from '@/components/ComponentNavbarConnect.vue'
 import ComponentCompte from '@/components/ComponentCompte.vue';
-import ComponentNavbar from '@/components/ComponentNavbar.vue';
+import axios from 'axios'
 
 export default {
     name:"CompteView",
     components:{
         ComponentCompte,
-        ComponentNavbar
+       ComponentNavbarConnect
 
     },
     data() {

@@ -54,11 +54,13 @@ export default {
 <style lang="css" scoped>
 .content{
     width: 80%;
-    height: auto;
+    height: 100%;
     /* border: 1px solid black; */
     padding: 10px;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 

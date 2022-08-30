@@ -1,5 +1,5 @@
 <template>
-  <ComponentNavbar/>
+  <ComponentNavbarConnect/>
 
   <ComponentMaladie :maladies="maladies" />
 
@@ -7,12 +7,13 @@
 
 <script>
 
-import ComponentNavbar from '@/components/ComponentNavbar.vue';
+import ComponentNavbarConnect from '@/components/ComponentNavbarConnect.vue'
 import ComponentMaladie from '@/components/ComponentMaladie.vue';
+import axios from 'axios'
 export default {
     name:"MaladieView",
     components:{
-        ComponentNavbar,
+        ComponentNavbarConnect,
         ComponentMaladie 
 
     },

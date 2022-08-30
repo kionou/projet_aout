@@ -1,5 +1,5 @@
 <template>
-  <ComponentNavbar/>
+  <ComponentNavbarConnect/>
 
 
 
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ComponentNavbar from '@/components/ComponentNavbar.vue';
+import ComponentNavbarConnect from '@/components/ComponentNavbarConnect.vue'
 import ComponentContainer from '../components/ComponentContainer.vue';
 import axios from 'axios'
 
@@ -17,7 +17,7 @@ export default {
     name:"CarnetView",
     props:['id'],
     components:{
-        ComponentNavbar,
+        ComponentNavbarConnect,
         ComponentContainer
     },
     data() {

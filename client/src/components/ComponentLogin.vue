@@ -130,7 +130,7 @@ export default{
     transform: translate(-50% , -50%);
     width: 58%;
     height: auto;
-    border: 1px solid rgb(23, 194, 190);
+    border: 1px solid #00afea;
     background-color: white;
     border-radius: 5px;
     display: flex;
@@ -150,7 +150,7 @@ small ,.message{
     transform: translate(-50%, -50%);
     width: auto;
     height: 330px;
-    border: 1px solid rgb(23, 194, 190);
+    border: 1px solid #00afea;
     background-color: white;
     border-radius: 5px;
     display: flex;
@@ -167,7 +167,7 @@ small ,.message{
     transform: translate(-50%, -50%);
     width: 58%;
     height: auto;
-    border: 1px solid rgb(23, 194, 190);
+    border: 1px solid #00afea;
     background-color: white;
     border-radius: 5px;
     display: flex;
@@ -234,14 +234,13 @@ input {
 }
 
 
-
 input::placeholder {
     opacity: 0;
 }
 
 input:focus,
 input:not(:placeholder-shown) {
-    border-bottom: 2px solid rgb(23, 194, 190);
+    border-bottom: 2px solid #00afea;
 
 }
 
@@ -250,58 +249,20 @@ input:focus~label {
     transform: translate(10px, -30px) scale(.8);
 }
 .sanp{
-    color: rgb(23, 194, 190);
+    color: #00afea;
 }
 .sanp:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
-.container-passe p{
-    /* border: 1px solid red; */
-    padding: 10px;
-}
-
-.container-passe h2{
-    /* border: 1px solid blue; */
-    padding: 10px;
-}
-
-.container-passe #input , .Container #input {
-    height: 3rem;
-    width: 30rem;
-    padding: 10px;
-    font-size: 18px;
-    outline: none;
-    border: 1px solid;
-    border-radius: 10px;
-    font-family: 'Roboto Serif', serif;
-    margin-top: 40px;
-}
-
-.container-passe #input:hover {
-    border: 1px solid rgb(23, 194, 190);
-}
-
-.Container #input:hover {
-    border: 1px solid rgb(23, 194, 190);
-}
 
 
 
 
-.mot-passe{
-    text-align: right;
-    width: 30rem;
-}
 
-.mot-passe a {
-    text-decoration: none;
-    color: rgb(23, 194, 190);
-}
-.mot-passe:hover a {
-    text-decoration: underline;
-}
+
+
 
 button {
     width: 9rem;
@@ -309,52 +270,20 @@ button {
     margin-top: 25px ;
     text-align: center;
     border: none;
-    background-color: rgb(23, 194, 190);
+    background-color: #00afea;
     color: white;
     border-radius: 5px;
     font-size: 23px;
-    font-family: 'Kaushan Script',    cursive;
+    font-family: 'Kaushan Script',cursive;
 }
 
 button:hover {
     background-color: white;
-    color: rgb(23, 194, 190);
-    border: 1px solid rgb(23, 194, 190);
+    color: #00afea;
+    border: 1px solid #00afea;
     cursor: pointer;
 }
 
-.btnPassword {
-    width: 10rem;
-    height: 3rem;
-    margin-top: 25px;
-    text-align: center;
-    border: none;
-    background-color: rgb(23, 194, 190);
-    color: white;
-    border-radius: 5px;
-    font-size: 23px;
-    font-family: 'Kaushan Script', cursive;
-}
-
-.btnPassword:hover {
-    background-color: white;
-    color: rgb(23, 194, 190);
-    border: 1px solid rgb(23, 194, 190);
-    cursor: pointer;
-}
-
-.texte {
-    text-align: center;
-}
-
-.texte a{
-    text-decoration: none;
-    color: rgb(23, 194, 190);
-}
-
-.texte:hover a{
-    text-decoration: underline;
-}
 
 @media (min-width: 1900px) {
     .container , .container-passes{
@@ -406,12 +335,7 @@ button:hover {
         width: 100%;
         height: auto;
     }
-    .container-passes{
-        width: auto;
-    }
-    .recupere h1 , p{
-        padding: 0;
-    }
+  
 
     .btnPassword{
         height: auto;
@@ -424,15 +348,7 @@ button:hover {
     input{
         width: 16rem;
     }
-    .mot-passe {
-        width: 16rem;
-    }
-
-        .container-passe #input {
-          
-            width: 320px;
-         
-        }
+ 
 }
 
 @media (max-width: 498px) {

@@ -24,7 +24,8 @@ export default{
   box-sizing: border-box;
 }
 #app {
-  font-family: 'Roboto Serif', serif;
+   font-family: 'Roboto Serif', serif;
+ 
 
 }
 

@@ -9,12 +9,16 @@
             </ul>
         </div>
         <div class="carnet">
-  
+           
             <div class="table-container">
                 <h1 class="heading">
                     liste des vaccins
                 </h1>
-                <table class="table">
+                <div class="alert" v-if="alert">
+                    <p> {{alert}}</p>
+
+                </div>
+                <table class="table" v-else>
                         <thead>
                             <tr>
                                 <th>date de l'acte</th>
@@ -52,7 +56,7 @@
 import '@/assets/app'
 export default {
        name:"ComponentListeVaccin",
-       props:['vaccins','doctors'],
+       props:['vaccins','doctors','alert'],
     methods:{
         carnet(){
             this.$router.push({path:"/carnet/:id"})
@@ -188,6 +192,13 @@ span{
     cursor: pointer;
     color: #ee2828;
 
+}
+.alert{
+    border: 1px solid red;
+    padding: 20px 50px;
+    text-align: center;
+    margin-top: 90px;
+    font-size: 30px;
 }
 
 @media (max-width: 768px) {

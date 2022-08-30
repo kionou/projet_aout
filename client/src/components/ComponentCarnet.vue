@@ -41,7 +41,7 @@ export default {
 <style lang="css" scoped>
 .carnet{
     border: solid 1px #B3B3B3;
-    height: auto;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,6 +49,7 @@ export default {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     padding-bottom: 80px;
+        justify-content: space-evenly;
 }
 .carnet .text{
     margin-bottom: 20px;

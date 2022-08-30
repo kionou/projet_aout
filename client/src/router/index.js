@@ -31,12 +31,14 @@ const routes = [
   {
     path: '/compte',
     name: 'compte',
-    component: () => import( '../views/CompteView.vue')
+    component: () => import( '../views/CompteView.vue'),
+    props:true
   },
   {
     path: '/maladie',
     name: 'maladie',
-    component: () => import( '../views/MaladieView.vue')
+    component: () => import( '../views/MaladieView.vue'),
+    props:true
   },
   {
     path: '/listeVaccin',
@@ -51,9 +53,10 @@ const routes = [
     props:true
   },
   {
-    path: '/detailMaladie',
+    path: '/detailMaladie/:id',
     name: 'detailMaladie',
-    component: () => import( '../views/DetailMaladie.vue')
+    component: () => import( '../views/DetailMaladie.vue'),
+    props:true
   },
   {
     path: '/ajouter',
@@ -69,7 +72,8 @@ const routes = [
     path: '/doctorinfo',
     name: 'doctorinfo',
     component: () => import( '../views/DoctorInfo.vue')
-  }
+  },
+
  
  
 ]

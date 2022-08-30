@@ -42,14 +42,14 @@ export default {
     width: 100%;
     height: calc(100vh - 75px);
     /* border: 1px solid red; */
-    background:rgba(0, 0, 0, 0.2) url('@/assets/home.jpeg') center no-repeat;
+    background:rgba(0, 0, 0, 0.2) url('@/assets/home1.png') center no-repeat;
     background-size:cover ;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     font-size: 40px;
-    color: rgb(3 98 239);
+    color: black;
      background-blend-mode: darken;
     
 }
@@ -84,16 +84,17 @@ button {
     margin-top: 25px;
     text-align: center;
     border: none;
-    background-color: rgb(15, 142, 240) ;
+    background-color: #00afea;
     color: white;
     border-radius: 5px;
     font-size: 23px;
+    font-family: 'Kaushan Script', cursive;
 }
 
 button:hover {
     background-color: white;
-    color: rgb(15, 142, 240) ;
-    border: 1px solid rgb(15, 142, 240) ;
+    color: #00afea ;
+    border: 1px solid #00afea ;
     cursor: pointer;
 }
 

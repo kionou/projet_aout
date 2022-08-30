@@ -8,19 +8,16 @@
                 <li @click="maladie">Maladie</li>
             </ul>
         </div>
-        <div class="carnet">
-            <h1>Zona</h1>
+        <div class="carnet" v-for="maladie in maladies" :key="maladie.id">
+            <h1>{{maladie.nom_maladie}}</h1>
             <hr>
             <h5>la maladie</h5>
+         
             <span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta pariatur quia 
-                explicabo ducimus. Voluptates, non debitis laudantium inventore a et ab in 
-                doloribus praesentium ullam! Nemo molestias modi doloribus, autem numquam 
-                cumque sequi labore magni atque nostrum! Consequatur eius molestiae quaerat 
-                provident laboriosam maiores rem vero porro dolore ducimus. In?
+                    {{maladie.description}}
             </span>
             <h5>Vaccins contre cette maladie</h5>
-            <span>covidefuf </span>
+            <span>{{maladie.nom_vaccin}}</span>
           
          
        
@@ -32,6 +29,7 @@
 <script>
 export default {
         name:"ComponentHeader",
+        props:['maladies'],
     methods:{
         carnet(){
             this.$router.push({path:"/carnet"})
@@ -49,6 +47,7 @@ export default {
 
 <style lang="css" scoped>
 .container {
+    background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -61,11 +60,13 @@ export default {
 
 .content {
     width: 80%;
-    height: auto;
-    border: 1px solid black;
+    height: 100%;
+    /* border: 1px solid black; */
     padding: 10px;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 .header{
@@ -100,13 +101,13 @@ export default {
 
 .carnet {
     border: solid 1px #B3B3B3;
-    height: autp;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px 6px 10px;
     
 }
 
@@ -124,7 +125,7 @@ h5{
 span{
     font-size: 1.5em;
     /* border: 1px solid red; */
-    max-width: 710px;
+    /* max-width: 710px; */
         width: 98%;
         TEXT-ALIGN: center;
         PADDING: 10PX;
@@ -157,6 +158,7 @@ span{
         height: auto;
         margin-top: 0;
         justify-content: center;
+        
     }
 
     .header {

@@ -22,7 +22,7 @@ const MaladieControllers = class{
        
         let maladie = await dataMaladie.AfficherMaladieDetail(req.params.id)
         console.log('mama',maladie.success);
-        res.json(maladie.success)
+        res.send({"maladie":maladie.success})  
     }
 
     static UpdateMaladie = async (req=request,res=response)=>{

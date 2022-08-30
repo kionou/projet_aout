@@ -225,7 +225,7 @@ export default {
 .cadre {
     width: 780px;
     height: 481px;
-    border: 1px solid rgb(23, 194, 190);
+    border: 1px solid #00afea;
     border-radius: 5px;
     position: absolute;
     left: 50%;
@@ -287,7 +287,7 @@ input::placeholder{
 }
 input:focus,
  input:not(:placeholder-shown) {
-    border-bottom: 2px solid rgb(23, 194, 190);
+    border-bottom: 2px solid #00afea;
 
 }
 
@@ -305,7 +305,7 @@ button {
     height: 3rem;
     text-align: center;
     border: none;
-    background-color: rgb(23, 194, 190);
+    background-color: #00afea;
     color: white;
     border-radius: 5px;
     font-size: 23px;
@@ -314,8 +314,8 @@ button {
 
 button:hover {
     background-color: white;
-    color: rgb(23, 194, 190);
-    border: 1px solid rgb(23, 194, 190);
+    color: #00afea;
+    border: 1px solid #00afea;
     cursor: pointer;
 }
 
@@ -327,7 +327,7 @@ button:hover {
     margin-bottom: 25px;
 }
 .sanp{
-    color: rgb(23, 194, 190);
+    color: #00afea;
 }
 .sanp:hover{
     text-decoration: underline;

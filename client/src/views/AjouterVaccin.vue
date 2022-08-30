@@ -1,18 +1,18 @@
 <template>
-  <component-navbar/>
+  <ComponentNavbarConnect/>
   <ComponentAjouterVaccin :patient="patient" :doctor="doctor"/>
 
 </template>
 
 <script>
 
-import ComponentNavbar from '@/components/ComponentNavbar.vue';
+import ComponentNavbarConnect from '@/components/ComponentNavbarConnect.vue'
 import ComponentAjouterVaccin from '@/components/ComponentAjouterVaccin.vue';
 export default {
      name:'AjouterVaccin',
      props:['patient','doctor'],
     components:{
-        ComponentNavbar,
+       ComponentNavbarConnect,
         ComponentAjouterVaccin
 
     },

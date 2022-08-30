@@ -12,12 +12,12 @@
             <div class="compte-header">
                 <p>Gestion du compte</p>
             </div>
-            <table class="tableStd" style="max-width:600px;width: 98%;">
+            <table class="tableStd" >
 	
                 <tr class="titre"><td colspan="3">Paramètres du compte</td></tr>
         
-      <div v-for="user in users" :key="user.id">
-
+      <div v-for="user in users" :key="user.id" class="tableau">
+         
    
             <tr><td>Nom</td><td style="text-align:left;">{{user.nom}}</td></tr>
             <tr><td>prenom</td><td style="text-align:left;">{{user.prenom}}</td></tr>
@@ -40,9 +40,10 @@
 <script>
 export default {
     name:"ComponentCompte",
+    props:['users'],
     methods: {
          carnet(){
-            this.$router.push({path:"/carnet/:id"})
+            this.$router.push({path:"/carnet"})
         },
         compte(){
             this.$router.push({path:"/compte"})
@@ -65,23 +66,26 @@ export default {
 }
 
 .container {
+    background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     height: 100vh;
     padding: 10px;
 }
 
 .content{
-    width: 50%;
-    height: 80vh;
-    border: 1px solid black;
+    width: 80%;
+    height: 100%;
+    /* border: 1px solid black; */
     padding: 10px;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+     border-radius: 8px;
 }
 .header{
     border: 1px solid #B3B3B3;
@@ -119,29 +123,35 @@ export default {
 }
 .compte{
     border: solid 1px #B3B3B3;
-    height: 70vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 80px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    padding: 10px;
+    justify-content: space-between;
 }
 
 .compte .compte-header{
-    border: 1px solid black;
+    border: 1px solid #B3B3B3;
     width: 100%;
     text-align: center;
     padding: 10px;
     font-size: 25px;
 }
+.tableau{
+    width: 100%;
+}
 
 
 
 .tableStd {
-    width: 97%;
     margin: 20px auto 15px auto;
     border-collapse: collapse;
+    /* max-width:600px; */
+    width: 98%;
 }
 
 .tableStd tr.titre {
@@ -153,6 +163,7 @@ export default {
     font-size: 1em;
     font-family: arial;
     border-bottom: solid 1px #D8D8D8;
+    width: 100%;
 }
 .tableStd tr.titre {
     color: #F8F8F8;

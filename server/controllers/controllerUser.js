@@ -9,7 +9,7 @@ const bcrypt  = require('bcrypt');
 const UserControler = class{
     static PostUser = async (req=request,res=response)=>{
         
-        let user = await dataUser.DetaillUser(req.body.email)
+        let user = await dataUser.DetailUser(req.body.email)
             if (user.success == "") {
                 let Token =jsonwt.CreerToken(req.body)
                 mailer(req.body.email,Token)
@@ -47,6 +47,7 @@ const UserControler = class{
     static ConnexionToken = async(req=request,res=response)=>{
        
             let id = req.params.id;
+            console.log('fsfsd',id);
             let tokenId = jsonwt.VerifierToken(id)   
             let users = await dataUser.InsertionUser(tokenId);
             if (users.success) {

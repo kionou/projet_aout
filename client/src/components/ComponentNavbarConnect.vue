@@ -10,10 +10,10 @@
                     <router-link class="link" :to="{name:'home'}">Home</router-link>
                 </li>
                 <li>
-                    <router-link class="link" :to="{name:'about'}">About</router-link>
+                    <router-link class="link" :to="{name:'doctor'}">Espace Professionnel</router-link>
                 </li>
                 <li>
-                    <router-link class="link" :to="{name:'login'}">Mon carnet</router-link>
+                    <p class="link"  @click="logout">Deconnecter</p>
                 </li>
             </ul>
             <div class="icon" @click="toggleMobileNav" v-show="mobile" :class="{'icon-active':mobileNav}">
@@ -25,10 +25,10 @@
                     <router-link class="link" :to="{name:'home'}">Home</router-link>
                 </li>
                 <li>
-                    <router-link class="link" :to="{name:'about'}">About</router-link>
+                    <router-link class="link" :to="{name:'doctor'}">Espace Professionnel</router-link>
                 </li>
                 <li>
-                    <router-link class="link" :to="{name:'login'}">Mon carnet</router-link>
+                    <p class="link" >Deconnecter</p>
                 </li>
                 </ul>
             </transition>
@@ -58,6 +58,11 @@ export default {
     methods:{
          home(){
              this.$router.push({path:'/'})
+        },
+        logout(){
+            localStorage.removeItem('patient')
+            this.$router.push({path:'/login'})
+
         },
         toggleMobileNav(){
             this.mobileNav = !this.mobileNav;
@@ -104,10 +109,10 @@ header{
     padding: 12px 0;
     transition: 0.5s ease all;
     width:90%;
+    margin: 0 auto;
     @media (min-width: 1140px) {
         max-width: 1140px;
     }
-  
     ul,
     .link{
         font-weight: 500;
@@ -126,10 +131,12 @@ header{
         transition: .5s ease all;
         padding-bottom: 4px;
         border-bottom: 1px solid transparent;
+        
 
         &:hover{
             color: #00afea;
             border-color: #00afea;
+            cursor: pointer;
         }
     }
     .branding{
@@ -212,7 +219,6 @@ header{
 nav{
     padding: 8px 0;
 }
- 
 
 
 </style>

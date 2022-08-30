@@ -26,6 +26,7 @@ export default {
 
 <style lang="css" scoped>
 .container {
+    background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */

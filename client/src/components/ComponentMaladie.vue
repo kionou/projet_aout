@@ -13,13 +13,11 @@
             <h5 class="title">
                 Maladies à prévention vaccinale
                </h5>
-            <div class="cadre-vaccin" v-for="maladie in maladies" :key="maladie.id">
-                <div class="vaccin-content">
-                    <p @click="redirect">{{maladie.nom}}</p>
+            <div class="cadre-vaccin" >
+                <div class="vaccin-content"  v-for="maladie in maladies" :key="maladie.id" @click="redirect(maladie.id)">
+                    <p >{{maladie.nom_maladie}}</p>
                  </div>
-                 <div class="vaccin-content">
-                     <a href="">Zona</a>
-                 </div>
+                
             </div>
             
             
@@ -33,6 +31,7 @@
 <script>
 export default {
          name:"Componentmaladie",
+         props:['maladies'],
     methods:{
         carnet(){
             this.$router.push({path:"/carnet"})
@@ -43,8 +42,9 @@ export default {
         maladie(){
             this.$router.push({path:"/maladie"})
         },
-         redirect(){
-            this.$router.push({path:"/detailMaladie"})
+         redirect(id){
+            this.$router.push({path:`/detailMaladie/${id}`})
+           
         },
     }
 
@@ -53,22 +53,25 @@ export default {
 
 <style lang="css" scoped>
 .container {
+     background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     height: auto;
     padding: 10px;
 }
 .content{
-    width: 50%;
-    height: 80vh;
+    width: 80%;
+    height: 100%;
     /* border: 1px solid black; */
     padding: 10px;
     display: flex;
     flex-direction: column;
+     background-color: #fff;
+    border-radius: 8px;
 }
 .header{
     border: 1px solid #B3B3B3;
@@ -105,14 +108,7 @@ export default {
     cursor: pointer;
 }
 
-.content{
-    width: 50%;
-    height:auto;
-    /* border: 1px solid black; */
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
+
 .content .title{
     text-align: center;
     padding: 20px;
@@ -141,7 +137,6 @@ export default {
 .vaccination .vaccin-content{
     border: 1px solid rgb(15, 142, 240);
     border-radius: 10px;
-    padding: 20px;
     max-width: 400px;
     width: 98%;
     text-align: center;
@@ -149,10 +144,26 @@ export default {
     margin-bottom: 10px;
 
 }
+.vaccination .vaccin-content:hover{
+    border: 1px solid #fff;
+    cursor: pointer;
+    background-color: rgb(15, 142, 240);
+    color: #fff;
+    
+  
+
+}
 .vaccination .vaccin-content p{
     text-decoration: none;
+    width: 100%;
     color: rgb(15, 142, 240);
-    cursor: pointer;
+    height: 100%;
+    padding: 20px;
+   
+}
+.vaccination .vaccin-content p:hover{
+    color: #fff;
+   
 }
 
 

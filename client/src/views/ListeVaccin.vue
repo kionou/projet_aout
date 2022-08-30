@@ -1,25 +1,26 @@
 <template>
-  <ComponentNavbar/>
+  <ComponentNavbarConnect/>
 
-  <ComponentListeVaccin :vaccins="vaccins" :doctors="doctors" />
+  <ComponentListeVaccin :vaccins="vaccins" :doctors="doctors" :alert="alert" />
 </template>
 
 <script>
-import ComponentNavbar from '@/components/ComponentNavbar.vue';
+import ComponentNavbarConnect from '@/components/ComponentNavbarConnect.vue'
 import ComponentListeVaccin from '@/components/ComponentListeVaccin.vue';
 import axios from 'axios';
 export default {
     name:'ListeVaccin',
-    props:['vaccins','doctors'],
+    props:['vaccins','doctors','alert'],
     components:{
-        ComponentNavbar,
+        ComponentNavbarConnect,
         ComponentListeVaccin,
 
     },
     data(){
      return{
       vaccins:'',
-      doctors:''
+      doctors:'',
+      alert:''
 
      } 
     },
@@ -40,9 +41,15 @@ export default {
           // console.log("sfsdfg",auth);
           axios.get('http://localhost:3000/vaccin/detailvaccin',{ headers: {patient : localStorage.getItem('patient')}})
          .then((response) =>{
-            //  console.log('response',response.data.doctor);
-              this.doctors= response.data.doctor,
-              this.vaccins= response.data.vaccin 
+              console.log('response',response.data.alert);
+              if (response.data.alert) {
+                this.alert = response.data.alert
+                
+              } else {
+                  this.doctors= response.data.doctor,
+                  this.vaccins= response.data.vaccin
+              }
+              
          })
           
         }else{
