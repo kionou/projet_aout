@@ -50,6 +50,20 @@ const dataVaccin = class{
         })
         
     }
+
+      static AfficherVaccinAll=  ()=>{
+        
+        return new Promise(async (next)=>{
+            vaccins.findAll()
+            .then(resultat=>{
+                console.log('ss',resultat);
+                next({success:resultat})
+            }).catch(err=>{
+                console.log("eee",err);
+                next ({erreur:err})
+            })
+        }) 
+    }
 }
 
 module.exports =dataVaccin
