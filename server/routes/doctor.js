@@ -6,8 +6,11 @@ router.post('/doctorpost', DoctorControllers.PostDocteur);
 router.post('/doctorconnexion', DoctorControllers.ConnexionDoctor);
 router.get('/alldoctor', DoctorControllers.AfficheDoctorAll);
 router.get('/detaildoctor/:id',DoctorControllers.AfficheDetailDoctor)
-router.get('/updatedoctor',DoctorControllers.UpdateDoctor)
+router.post('/updatedoctor',DoctorControllers.UpdateDoctor)
 router.delete('/deletedoctor/:id',DoctorControllers.DeleteDoctor)
+router.get('/detaildoctor',DoctorControllers.DetailDoctor)
+router.get('/infodoctor/:id',DoctorControllers.InfoDoctor)
+
 
 
 

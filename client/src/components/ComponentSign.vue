@@ -89,7 +89,7 @@ export default {
         return{
            
              
-                  nom:'',
+                nom:'',
                 prenom:'',
                 email:'',
                 numero:'',
@@ -175,7 +175,7 @@ export default {
                     if (response.data.alert) {
                         this.message=response.data.alert    
                     }else{
-                       
+                       console.log('bonjour');
                          this.revele = !this.revele
                     }
 

@@ -11,24 +11,32 @@
         <div class="carnet">
             <h2>Ajouter un vaccin</h2>
             <form action="">
-                <!-- <div class="form-content">
-                    <label for="" >Date de l'acte</label>
-                    <input type="date" v-model="so">
-                </div> -->
+         
                 <div class="form-content">
-                    <label for="">Vaccin utilisé</label>
+                    <label for="">Nom</label>
                     <input type="text" v-model="nom" >
                 </div>
                  <div class="form-content">
-                    <label for="">Lutte contre</label>
-                    <input type="text"  v-model="nom_maladie">
+                    <label for="">Prenom</label>
+                    <input type="text" v-model="prenom" >
                 </div>
-                <input type="hidden" v-model="patient">
-                <input type="hidden" v-model="doctor">
+                 <div class="form-content">
+                    <label for="">Adresse Email</label>
+                    <input type="text" v-model="email" >
+                </div>
+                 <div class="form-content">
+                    <label for="">Numero</label>
+                    <input type="text" v-model="numero" >
+                </div>
+                 <div class="form-content">
+                    <label for="">Date de naissance</label>
+                    <input type="text"  v-model="date_naissance">
+                </div>
+               
                 <button @click.prevent="submit">Ajouter</button>
                
             </form>
-          
+         {{users}}
          
        
         </div>
@@ -39,15 +47,16 @@
 <script>
 import axios from 'axios'
 export default {
-      name:"ComponentAjouterVaccin",
-      props:['patient','doctor'],
+      name:"ComponentUpdatePatient",
+      props:['users'],
       data() {
         return {
-            nom:"",
-            nom_maladie:"",
-            patient:this.patient,
-            doctor:this.doctor
-            
+                nom:this.users.nom,
+                prenom:this.users.prenom,
+                email:this.users.email,
+                numero:this.users.numero,
+                date_naissance:this.users.date_naissance,
+                    
         }
       },
     methods:{
@@ -67,14 +76,16 @@ export default {
             // this.v$.$touch()
             // if (this.v$.$errors.length == 0 ) {
                 // this.revele = !this.revele
-             let   DataVaccin={
+            let   DataUser={
                     nom:this.nom,
-                    nom_maladie:this.nom_maladie,
-                    id_user:this.patient,
-                    id_doctor:this.doctor
+                    prenom:this.prenom,
+                    email:this.email,
+                    numero:this.numero,
+                    date_naissance:this.date_naissance,
+                   
                 }
-
-                   axios.post('http://localhost:3000/vaccin/vaccinpost',DataVaccin)
+                console.log("dsqf",DataUser);
+                   axios.post('http://localhost:3000/users/updateuser',DataUser)
                   .then((response) => {
                     console.log('message',response.data)
                     

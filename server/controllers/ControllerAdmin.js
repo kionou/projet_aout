@@ -18,5 +18,44 @@ const AdminControllers = class{
         res.render('index',{doctor:doctor.success,patient:patient.success,maladie:maladie.success,vaccin:vaccin.success})
       
     }
+
+    static Edit = async (req=request,res=response)=>{
+        
+        let id = req.params.id
+        let patient = await dataUser.DetailUserId(id)
+        res.render('updatePatient',{patient:patient.success})
+      
+    }
+
+    static UpdatePatient = async (req=request,res=response)=>{
+        
+    console.log(req.body);
+    let updatePatient = await dataUser.UpdateUser(req.body)
+    if (updatePatient.success) {
+        res.redirect('/')
+        
+    } 
+   
+      
+    }
+
+    static InsertDoctor = async (req=request,res=response)=>{
+        
+       res.render('createDoctor')
+       
+          
+    }
+
+
+    static InsertDoctorPost = async (req=request,res=response)=>{
+        let doctor = await dataDoctor.InsertionDoctor(req.body)
+        
+        if (doctor.success) {
+            res.json(doctor.success)
+            
+        }
+        
+           
+     }
 }
 module.exports=AdminControllers

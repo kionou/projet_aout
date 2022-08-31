@@ -11,8 +11,8 @@ const UserControler = class{
         
         let user = await dataUser.DetailUser(req.body.email)
             if (user.success == "") {
-                let Token =jsonwt.CreerToken(req.body)
-                mailer(req.body.email,Token)
+            let users = await dataUser.InsertionUser(req.body);
+            res.send({"user":users.success}) 
                 
             }else{
                 res.send({"alert":"Email existe déjà "})
@@ -74,11 +74,11 @@ const UserControler = class{
     }
 
     static UpdateUser = async(req=request,res=response)=>{
-       
+       console.log(req.body);
         
-         let user = await dataUser.UpdateUser(req.body)
-         console.log('user',user.success);
-         res.json(user.success)
+        //  let user = await dataUser.UpdateUser(req.body)
+        //  console.log('user',user.success);
+        //  res.json(user.success)
     }
 
     static DeleteUser = async(req=request,res=response)=>{

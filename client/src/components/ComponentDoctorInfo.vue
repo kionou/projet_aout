@@ -1,105 +1,163 @@
 <template>
 <div class="container">
-    <div class="content">
-        <div class="content-image">
-            <div class="image">
-                <img src="@/assets/user.png" alt="">
-            </div>
+       <div class="navbar-top">
+        <div class="title">
+            <h1>Profile</h1>
         </div>
-        <div class="content-info">
-            <h3>Information du doctor</h3>
-            <div>
-                <p>Nom : <span>kionou</span> </p>
-            </div>
-            <div>
-                <p>Prenom : <span>kionou</span> </p>
-            </div>
-            <div>
-                <p>Adresse Email: <span>kionou</span> </p>
-            </div>
-            <div>
-                <p>Numero : <span>kionou</span> </p>
-            </div>
-            <div>
-                <p>Specialité : <span>kionou</span> </p>
-            </div>
-            <div>
-                <p>Centre : <span>kionou</span> </p>
+    </div>
+
+     <div class="main">
+        <h2>IDENTITY</h2>
+        <div class="card">
+            <div class="card-body">
+                <i class="fa fa-pen fa-xs edit"></i>
+                <table>
+                    <tbody v-for="doctor in doctors" :key="doctor.id">
+                        <tr>
+                            <td>Nom</td>
+                            <td>:</td>
+                            <td>{{doctor.nom}}</td>
+                        </tr>
+                        <tr>
+                            <td>Prenom</td>
+                            <td>:</td>
+                            <td>{{doctor.prenom}}</td>
+                        </tr>
+                        <tr>
+                            <td>Addresse Email</td>
+                            <td>:</td>
+                            <td>{{doctor.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Numero</td>
+                            <td>:</td>
+                            <td>{{doctor.numero}}</td>
+                        </tr>
+                        <tr>
+                            <td>Specialité</td>
+                            <td>:</td>
+                            <td>{{doctor.specialite}}</td>
+                        </tr>
+                        <tr>
+                            <td>Centre</td>
+                            <td>:</td>
+                            <td>{{doctor.centre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
+    
+        
     </div>
+   
 </div>
+   
+   
+   
+   
 </template>
 
 <script>
 export default {
-    name:'ComponentDoctorInfo'
+    name:'ComponentDoctorInfo',
+    props:['doctors']
 
 }
 </script>
 
 <style lang="css" scoped>
 
-.container {
+.container{
+    width: 100%;
+    height: calc(100vh - 100px);
+    /* border: 1px solid red; */
+}
+
+.navbar-top {
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0px 4px 8px 0px grey;
+    height: 70px;
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    padding-top: 15px;
+    position: absolute;
+    left: 45%;
+}
+
+.navbar-top ul {
+    float: right;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 18px 50px 0 40px;
+}
+
+.navbar-top ul li {
+    float: left;
+}
+
+.navbar-top ul li a {
+    color: #333;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+
+.profile {
+    margin-bottom: 20px;
+    margin-top: -12px;
+    text-align: center;
+}
+
+.main {
+    background-color: #f5f5f5;
+      font-size: 28px;
+    padding: 0 10px;
+    /* width: 58%; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid red;
-    width: 100%;
-    height: 100vh;
-    padding: 10px;
-}
-
-.content{
-    width: 50%;
-    height: 60vh;
-    border: 1px solid black;
-    padding: 10px;
-    display: flex;
-    /* flex-direction: column; */
-}
-.content-image{
-    border: 1px solid rgb(0, 255, 60);
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-    height: auto;
-
-}
-.image{
-    width: 180px;
-    height: 200px;
-    border: 1px solid blue;
-    padding: 5px;
-}
-.image img{
-    width: 100%;
+    /* border: 1px solid red; */
+    /* width: 100%; */
     height: 100%;
-}
-h3{
-     font-size: 30px;
-     text-decoration: underline;
-
-}
-
-.content-info{
-    border: 1px solid red;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    font-size: 30px;
-    
+        justify-content: center;
 }
-.content-info p{
-    font-weight: 700;
+
+.main h2 {
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
-.content-info p span{
-    font-weight: normal;
+
+.main .card {
+    background-color: #fff;
+    border-radius: 18px;
+    box-shadow: 1px 1px 8px 0 grey;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 20px 0 20px 50px;
+    width: 98%;
+    max-width: 700px;
 }
+
+.main .card table {
+    border: none;
+    font-size: 16px;
+    height: 270px;
+    width: 80%;
+}
+
+
+
+
+
 
 </style>

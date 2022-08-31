@@ -9,7 +9,7 @@
             <img src="../assets/clipart1725690.png" alt="">
         </div>
         
-        <p>Nous vous avions envoye un message jde confirmation sur votre compte  veillez vous connectez vous finalisez vous inscription merci!</p>
+        <p>Inscription reçu avec success veillez-vous connecter merci!</p>
     </div>
   </div>
 </template>

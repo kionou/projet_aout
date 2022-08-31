@@ -18,6 +18,12 @@ const routes = [
     component: () => import( '../views/LoginView.vue')
   },
   {
+    path: '/login/:id',
+    name: 'loginid',
+    component: () => import( '../views/LoginView.vue'),
+    props:true
+  },
+  {
     path: '/sign',
     name: 'sign',
     component: () => import( '../views/SignView.vue')
@@ -71,7 +77,14 @@ const routes = [
   {
     path: '/doctorinfo',
     name: 'doctorinfo',
-    component: () => import( '../views/DoctorInfo.vue')
+    component: () => import( '../views/DoctorInfo.vue'),
+    props:true
+  },
+  {
+    path: '/updatepatient',
+    name: 'updatepatient',
+    component: () => import( '../views/UpdatePatient.vue'),
+    props:true
   },
 
  

@@ -59,7 +59,7 @@ export default {
        props:['vaccins','doctors','alert'],
     methods:{
         carnet(){
-            this.$router.push({path:"/carnet/:id"})
+            this.$router.push({path:"/carnet"})
         },
         compte(){
             this.$router.push({path:"/compte"})
@@ -83,24 +83,26 @@ export default {
 <style lang="css" scoped>
 
 .container {
- 
+  background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    border: 1px solid red;
-    width: 100%;
+   /* border: 1px solid red;*/
+     height: calc(100vh - 75px);
     height: 100vh;
     padding: 10px;
 }
 
 .content {
     width: 80%;
-    height: 80vh;
-    border: 1px solid black;
+    height: 100%;
+   /* border: 1px solid black;*/
     padding: 10px;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 .header{
@@ -135,13 +137,15 @@ export default {
 
 .carnet {
     border: solid 1px #B3B3B3;
-    height: 50vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
 .table-container{
     padding: 0 10px;
@@ -152,7 +156,7 @@ export default {
 .heading{
     font-size: 40px;
     text-align: center;
-    color: #f1f1f1;
+    color: #3c3f44;
     margin-bottom: 40px;
 }
 .table{
@@ -160,7 +164,7 @@ export default {
     border-collapse: collapse;
 }
 .table thead{
-    background-color: #ee2828;
+    background-color: rgb(15,142,240)
 }
 
 .table thead tr th{
@@ -171,7 +175,7 @@ export default {
     opacity:1;
     padding:12px;
     vertical-align: top;
-    border:1px solid #dee2e685;
+    border:1px solid #3c3f44;
 
 }
 
@@ -179,11 +183,10 @@ export default {
     font-size: 14px;
     letter-spacing: 0.35px;
     font-weight: normal;
-    color: #f1f1f1;
-    background-color: #3c3f44;
+    color: #3c3f44;
     padding: 8px;
     text-align: center;
-    border: 1px solid #dee2e685;
+    border: 1px solid #3c3f44;
 }
 span{
     width: 100%;
@@ -194,11 +197,12 @@ span{
 
 }
 .alert{
-    border: 1px solid red;
+    border: 1px solid #B3B3B3;
     padding: 20px 50px;
     text-align: center;
     margin-top: 90px;
     font-size: 30px;
+    border-radius: 8px;
 }
 
 @media (max-width: 768px) {

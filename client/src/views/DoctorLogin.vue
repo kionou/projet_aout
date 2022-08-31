@@ -13,7 +13,18 @@ export default {
     components:{
         ComponentDoctorLogin,
         ComponentNavbarConnect
-    }
+    },
+        created(){
+      const auth = localStorage.getItem('doctor')
+      console.log("authhhh",auth);
+      if (auth === null ) {
+        this.$router.push({path:'/doctor'})
+        
+      }else{
+        this.$router.replace('/ajouterVaccin')
+      }
+    },
+
 
 }
 </script>

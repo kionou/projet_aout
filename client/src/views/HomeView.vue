@@ -4,14 +4,13 @@
 
 <ComponentHome/>
 
-<ComponentFooter/>
+
    
 </template>
 
 <script>
 import ComponentHome from '@/components/ComponentHome.vue';
 import ComponentNavbar from '@/components/ComponentNavbar.vue';
- import ComponentFooter from '@/components/ComponentFooter.vue';
 
 
 // @ is an alias to /src
@@ -20,7 +19,6 @@ export default {
   components: {
     ComponentNavbar,
     ComponentHome,
-      ComponentFooter,
     
   }
 }

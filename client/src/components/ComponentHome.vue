@@ -2,7 +2,7 @@
      <div class="container">
         <div class="texte">
            <p>
-            Mon carnet de vaccination électronique apporté à main partout ou vous vous trouvez
+            Mon carnet de vaccination électronique apporté de main partout ou je me trouve
            </p>
            <p class="small">pour etre mieux vacciné,sans défaut ni excès.</p>
         </div>

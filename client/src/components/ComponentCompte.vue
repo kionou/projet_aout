@@ -12,25 +12,51 @@
             <div class="compte-header">
                 <p>Gestion du compte</p>
             </div>
-            <table class="tableStd" >
-	
-                <tr class="titre"><td colspan="3">Paramètres du compte</td></tr>
-        
-      <div v-for="user in users" :key="user.id" class="tableau">
          
-   
-            <tr><td>Nom</td><td style="text-align:left;">{{user.nom}}</td></tr>
-            <tr><td>prenom</td><td style="text-align:left;">{{user.prenom}}</td></tr>
-            <tr><td>Email</td><td style="text-align:left;"><span style="font-family:courier new; font-size:1.2em">{{user.email}}</span></td></tr>	
-            <tr><td>Numero</td><td>{{user.numero}}</td></tr>
-            <tr><td>Date de naissance</td><td>{{user.date_naissance}}</td></tr>
-            <tr><td>Mot de passe</td><td>*******</td></tr>
-          
-        </div>    
-            
-        </table>
+
+            <div class="main">
+       
+        <div class="card">
+            <div class="card-body">
+                <i class="fa fa-pen fa-xs edit"></i>
+                <table>
+                    <tbody  v-for="user in users" :key="user.id">
+                        <tr>
+                            <td>Nom</td>
+                            <td>:</td>
+                            <td>{{user.nom}}</td>
+                        </tr>
+                        <tr>
+                            <td>Prenom</td>
+                            <td>:</td>
+                            <td>{{user.prenom}}</td>
+                        </tr>
+                        <tr>
+                            <td>Addresse Email</td>
+                            <td>:</td>
+                            <td>{{user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Numero</td>
+                            <td>:</td>
+                            <td>{{user.numero}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date de naissance</td>
+                            <td>:</td>
+                            <td>{{user.date_naissance}}</td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    
+        
+    </div>
         <div class="btn">
-            <button>modifier</button>
+            <button @click="redirect">modifier</button>
         </div>
            </div>
           </div>
@@ -50,6 +76,9 @@ export default {
         },
         maladie(){
             this.$router.push({path:"/maladie"})
+        },
+         redirect(){
+            this.$router.push({path:"/updatepatient"})
         },
     }
     
@@ -141,36 +170,44 @@ export default {
     padding: 10px;
     font-size: 25px;
 }
-.tableau{
-    width: 100%;
+
+.main {
+
+      font-size: 28px;
+    padding: 0 10px;
+    /* width: 58%; */
+    display: flex;
+    flex-direction: column;
+     /* border: 1px solid red;  */
+     width: 100%; 
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
+.main h2 {
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
 
-
-.tableStd {
-    margin: 20px auto 15px auto;
-    border-collapse: collapse;
-    /* max-width:600px; */
+.main .card {
+    background-color: #fff;
+    border-radius: 18px;
+    box-shadow: 1px 1px 8px 0 grey;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 20px 0 20px 50px;
     width: 98%;
+    max-width: 700px;
 }
 
-.tableStd tr.titre {
-    color: #F8F8F8;
-    background-color: #989898;
-}
-.tableStd td {
-    padding: 8px;
-    font-size: 1em;
-    font-family: arial;
-    border-bottom: solid 1px #D8D8D8;
-    width: 100%;
-}
-.tableStd tr.titre {
-    color: #F8F8F8;
-    background-color: #989898;
-}
-.tableStd tr {
-    background-color: #E6E6E6;
+.main .card table {
+    border: none;
+    font-size: 16px;
+    height: 270px;
+    width: 80%;
 }
 
 button {
@@ -183,6 +220,7 @@ button {
     color: white;
     border-radius: 5px;
     font-size: 23px;
+    font-family: 'Roboto Serif', serif;
 }
 
 button:hover {

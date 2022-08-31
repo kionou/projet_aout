@@ -27,9 +27,9 @@ rel="stylesheet"
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-9">
       
-              <h1 class="text-white mb-4">Modifier les infos du patient</h1>
-              <% patient.forEach(function(patient){ %>
-                <form action="/updatePatient" method="post">
+              <h1 class="text-white mb-4">Enregistrer un Professionnel de sante</h1>
+             
+                <form action="/insertdoctor" method="post">
                   <div class="card" style="border-radius: 15px;">
                     <div class="card-body">
           
@@ -41,7 +41,7 @@ rel="stylesheet"
                         </div>
                         <div class="col-md-9 pe-5">
           
-                          <input type="text"  name="nom" class="form-control form-control-lg"  value="<%=patient.nom %>"/>
+                          <input type="text"  name="nom" class="form-control form-control-lg"  />
           
                         </div>
                       </div>
@@ -53,7 +53,7 @@ rel="stylesheet"
                         </div>
                         <div class="col-md-9 pe-5">
           
-                          <input type="text" name="prenom" class="form-control form-control-lg" value="<%=patient.prenom %>"/>
+                          <input type="text" name="prenom" class="form-control form-control-lg" />
           
                         </div>
                       </div>
@@ -68,7 +68,7 @@ rel="stylesheet"
                         </div>
                         <div class="col-md-9 pe-5">
           
-                          <input type="email" name="email" class="form-control form-control-lg" placeholder="example@example.com" value="<%=patient.email %>" />
+                          <input type="email" name="email" class="form-control form-control-lg" placeholder="example@example.com"  />
           
                         </div>
                       </div>
@@ -80,7 +80,7 @@ rel="stylesheet"
                         </div>
                         <div class="col-md-9 pe-5">
           
-                          <input type="text" name="numero" class="form-control form-control-lg"  value="<%=patient.numero %>"/>
+                          <input type="text" name="numero" class="form-control form-control-lg"  />
           
                         </div>
                       </div>
@@ -90,18 +90,41 @@ rel="stylesheet"
                       <div class="row align-items-center py-3">
                         <div class="col-md-3 ps-5">
           
-                          <h6 class="mb-0">Date de naissance</h6>
+                          <h6 class="mb-0">Specialité</h6>
           
                         </div>
                         <div class="col-md-9 pe-5">
           
-                          <input type="text" name="date_naissance" class="form-control form-control-lg"  value="<%=patient.date_naissance %>"/>
+                          <input type="text" name="specialite" class="form-control form-control-lg"  />
           
                         </div>
                       </div>
-                      <input type="hidden" name="id" value="<%=patient.id%>">
+                      <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
           
-                   
+                          <h6 class="mb-0">Centre</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="text" name="centre" class="form-control form-control-lg"  />
+          
+                        </div>
+                      </div>
+          
+                      <hr class="mx-n3">
+          
+                      <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Mot de passe </h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="text" name="password" class="form-control form-control-lg"  />
+          
+                        </div>
           
                       <hr class="mx-n3">
           
@@ -112,7 +135,7 @@ rel="stylesheet"
                     </div>
                   </div>
                 </form>
-                <% }); %>
+              
                
                
           

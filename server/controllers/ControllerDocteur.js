@@ -12,7 +12,7 @@ const DoctorControllers = class{
         let doctor = await dataDoctor.DetailDoctorEmail(req.body.email)
         if (doctor.success == "") {
             let doctors = await dataDoctor.InsertionDoctor(req.body)
-             res.json(doctors.success)
+             res.redirect('/')
 
             
         }else{
@@ -56,14 +56,15 @@ const DoctorControllers = class{
        
         let doctor = await dataDoctor.DetailDoctorId(req.params.id)
         console.log('mama',doctor.success);
-        res.json(doctor.success)
+        res.render('updateDoctor',{doctor:doctor.success})
     }
 
      static UpdateDoctor = async(req=request,res=response)=>{
+         console.log(req.body);
        
          let doctor = await dataDoctor.UpdateDoctor(req.body)
          console.log('user',doctor.success);
-         res.json(doctor.success)
+          res.redirect('/')
     }
 
     static DeleteDoctor = async(req=request,res=response)=>{
@@ -72,6 +73,27 @@ const DoctorControllers = class{
          let doctor = await dataDoctor.DeleteDoctor(req.params.id)
          console.log('user',doctor.success);
          res.json(doctor.success)
+    }
+
+    static DetailDoctor = async(req=request,res=response)=>{
+       
+        console.log('yhunkgbb',req.headers.doctor);
+        let token = req.headers.doctor
+        let verifier = jsonwt.VerifierToken(token)
+         console.log('yhunkgbb',verifier);
+          let doctor = await dataDoctor.DetailDoctorId(verifier.id)
+         res.send({"doctor":doctor.success}) 
+      
+    }
+
+    static InfoDoctor = async(req=request,res=response)=>{
+       
+       
+        let doctor = await dataDoctor.DetailDoctorId(req.params.id)
+        console.log('mama',doctor.success);
+        res.render('detialDoctor',{doctor:doctor.success})
+       
+      
     }
 }
 

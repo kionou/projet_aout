@@ -104,9 +104,7 @@ header{
     padding: 12px 0;
     transition: 0.5s ease all;
     width:90%;
-    @media (min-width: 1140px) {
-        max-width: 1140px;
-    }
+  
   
     ul,
     .link{
