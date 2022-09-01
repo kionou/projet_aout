@@ -1,0 +1,396 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 13.8
+-- Dumped by pg_dump version 13.8
+
+-- Started on 2022-09-01 08:20:48 GMT
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 200 (class 1259 OID 16395)
+-- Name: SequelizeMeta; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."SequelizeMeta" (
+    name character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public."SequelizeMeta" OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 16424)
+-- Name: doctors; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.doctors (
+    id integer NOT NULL,
+    nom character varying(255) NOT NULL,
+    prenom character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    numero character varying(255) NOT NULL,
+    specialite character varying(255) NOT NULL,
+    pseudo character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    centre character varying(255) NOT NULL,
+    image character varying(255) DEFAULT '/images/people.png'::character varying NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.doctors OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 16422)
+-- Name: doctors_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.doctors_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.doctors_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3215 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: doctors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.doctors_id_seq OWNED BY public.doctors.id;
+
+
+--
+-- TOC entry 204 (class 1259 OID 16413)
+-- Name: maladies; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.maladies (
+    id integer NOT NULL,
+    nom_maladie character varying(255) NOT NULL,
+    nom_vaccin character varying(255) NOT NULL,
+    description text NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.maladies OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 16411)
+-- Name: maladies_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.maladies_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.maladies_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3216 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: maladies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.maladies_id_seq OWNED BY public.maladies.id;
+
+
+--
+-- TOC entry 202 (class 1259 OID 16402)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    nom character varying(255) NOT NULL,
+    prenom character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    numero character varying(255) NOT NULL,
+    date_naissance character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 16400)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3217 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- TOC entry 208 (class 1259 OID 16436)
+-- Name: vaccins; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.vaccins (
+    id integer NOT NULL,
+    nom character varying(255) NOT NULL,
+    nom_maladie character varying(255) NOT NULL,
+    id_user integer NOT NULL,
+    id_doctor integer NOT NULL,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.vaccins OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 16434)
+-- Name: vaccins_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.vaccins_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.vaccins_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3218 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: vaccins_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.vaccins_id_seq OWNED BY public.vaccins.id;
+
+
+--
+-- TOC entry 3058 (class 2604 OID 16427)
+-- Name: doctors id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.doctors ALTER COLUMN id SET DEFAULT nextval('public.doctors_id_seq'::regclass);
+
+
+--
+-- TOC entry 3057 (class 2604 OID 16416)
+-- Name: maladies id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.maladies ALTER COLUMN id SET DEFAULT nextval('public.maladies_id_seq'::regclass);
+
+
+--
+-- TOC entry 3056 (class 2604 OID 16405)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 3060 (class 2604 OID 16439)
+-- Name: vaccins id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vaccins ALTER COLUMN id SET DEFAULT nextval('public.vaccins_id_seq'::regclass);
+
+
+--
+-- TOC entry 3201 (class 0 OID 16395)
+-- Dependencies: 200
+-- Data for Name: SequelizeMeta; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."SequelizeMeta" (name) FROM stdin;
+20220825094144-create-users.js
+20220826165018-create-maladies.js
+20220827152653-create-doctors.js
+20220828152016-create-vaccins.js
+\.
+
+
+--
+-- TOC entry 3207 (class 0 OID 16424)
+-- Dependencies: 206
+-- Data for Name: doctors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.doctors (id, nom, prenom, email, numero, specialite, pseudo, password, centre, image, "createdAt", "updatedAt") FROM stdin;
+2	pen	pen	pen@gmail.com	0670547634	infirmier	2EHQ10L	$2b$10$u13GhfVg2is7W5H.O6is6OHCNccDzLodgETGEcql3kR81wG.8Y6se	chu de cocody	/images/people.png	2022-08-31 15:52:12.997+00	2022-08-31 15:52:12.997+00
+1	kionou	mamadou	kionoumamadou.00@gmail.com	0670547634	medecin	7TDQXX1	$2b$10$AuGda/XfEdRAocqZSbly.OHzkqUkShY7n3rsaSWxh2RlSL.Ckrgpu	chu d'angre	/images/people.png	2022-08-31 09:55:58.832+00	2022-08-31 16:10:20.086+00
+\.
+
+
+--
+-- TOC entry 3205 (class 0 OID 16413)
+-- Dependencies: 204
+-- Data for Name: maladies; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.maladies (id, nom_maladie, nom_vaccin, description, "createdAt", "updatedAt") FROM stdin;
+1	Choléra	DUKORAL	Le choléra est une maladie diarrhéique épidémique, strictement humaine, due à des bactéries appartenant aux sérogroupes O1 et O139 de l’espèce Vibrio cholerae. Ce bacille fût initialement observé par Pacini en 1854 puis isolé en 1883 par Robert Koch en Inde. La bactérie V. cholerae sérogroupe O1, biotype El Tor, est répandue sur toute la planète, qui subit actuellement la septième pandémie de choléra. L’Organisation mondiale de la santé estime à près de 3 millions le nombre de cas et à plus de 95 000 le nombre de décès dus à cette maladie chaque année dans le monde. Toutes les régions du monde déclarent des cas de choléra, l’Afrique est le continent le plus touché et concentre plus de 50% des cas. Le taux global de létalité a été de 1,8%, en 2016, mais a dépassé les 6% parmi les groupes vulnérables résidant dans des zones à haut risque.	2022-08-30 10:53:08.987+00	2022-08-30 10:53:08.987+00
+2	covid-19	AstraZeneca	a COVID-19 est la maladie infectieuse causée par le dernier coronavirus qui a été découvert. Ce nouveau virus et cette maladie étaient inconnus avant l’apparition de la flambée à Wuhan (Chine) en décembre 2019\nLes symptômes les plus courants de la COVID-19 sont la fièvre, la fatigue et une toux sèche. Certains patients présentent des douleurs, une congestion nasale, un écoulement nasal, des maux de gorge ou une diarrhée. Ces symptômes sont généralement bénins et apparaissent de manière progressive. Certaines personnes, bien qu’infectées, ne présentent aucun symptôme et se sentent bien. La plupart (environ 80 %) des personnes guérissent sans avoir besoin de traitement particulier. Environ une personne sur six contractant la maladie présente des symptômes plus graves, notamment une dyspnée. Les personnes âgées et celles qui ont d’autres problèmes de santé (hypertension artérielle, problèmes cardiaques ou diabète) ont plus de risques de présenter des symptômes graves. Toute personne qui a de la fièvre, qui tousse et qui a des difficultés à respirer doit consulter un médecin.\n\nLa COVID-19 est transmise par des personnes porteuses du virus. La maladie peut se transmettre d’une personne à l’autre par le biais de gouttelettes respiratoires expulsées par le nez ou par la bouche lorsqu’une personne tousse ou éternue. Ces gouttelettes peuvent se retrouver sur des objets ou des surfaces autour de la personne en question. On peut alors contracter la COVID-19 si on touche ces objets ou ces surfaces et si on se touche ensuite les yeux, le nez ou la bouche. Il est également possible de contracter la COVID-19 en inhalant des gouttelettes d’une personne malade qui vient de tousser ou d’éternuer. C’est pourquoi il est important de se tenir à plus d’un mètre d’une personne malade.\n\n	2022-08-30 10:57:54.233+00	2022-08-30 10:57:54.233+00
+\.
+
+
+--
+-- TOC entry 3203 (class 0 OID 16402)
+-- Dependencies: 202
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, nom, prenom, email, numero, date_naissance, password, "createdAt", "updatedAt") FROM stdin;
+2	kionou	mohamed	kionoumamadou.00@gmail.com	0670547634	2000-05-09	$2b$10$c0eGNz2zDdp7AH4lzc3Mze2SlyIzdAkZWPaxI1lQGxVSGNxNOKZdK	2022-08-30 13:15:27.424+00	2022-08-30 13:15:27.424+00
+1	kionou	mamadou	kionoumamadou.00@gmail.com	0670547634	2000-05-09	$2b$10$0N9VKNHgMeybAZguEgUzuuk90VLCKmTtfZBwi5LWyPGt/kNfsbFKK	2022-08-30 10:35:04.781+00	2022-08-31 09:41:04.4+00
+3	kionou	mohamed	kionoumohamed@gmail.com	0670547634	2022-08-05	$2b$10$MphTgYxLggBSpdRiBhEtl.HL6cSm4pIpGPFD4Qa4/b22AouEyQ8xy	2022-08-31 11:31:28.73+00	2022-08-31 11:31:28.73+00
+\.
+
+
+--
+-- TOC entry 3209 (class 0 OID 16436)
+-- Dependencies: 208
+-- Data for Name: vaccins; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.vaccins (id, nom, nom_maladie, id_user, id_doctor, "createdAt", "updatedAt") FROM stdin;
+1	DUKORAL	Choléra	2	1	2022-08-31 10:21:03.342+00	2022-08-31 10:21:03.342+00
+2	AstraZeneca	Covid-19	2	1	2022-08-31 10:29:14.028+00	2022-08-31 10:29:14.028+00
+\.
+
+
+--
+-- TOC entry 3219 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: doctors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.doctors_id_seq', 2, true);
+
+
+--
+-- TOC entry 3220 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: maladies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.maladies_id_seq', 2, true);
+
+
+--
+-- TOC entry 3221 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+
+
+--
+-- TOC entry 3222 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: vaccins_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.vaccins_id_seq', 2, true);
+
+
+--
+-- TOC entry 3062 (class 2606 OID 16399)
+-- Name: SequelizeMeta SequelizeMeta_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."SequelizeMeta"
+    ADD CONSTRAINT "SequelizeMeta_pkey" PRIMARY KEY (name);
+
+
+--
+-- TOC entry 3068 (class 2606 OID 16433)
+-- Name: doctors doctors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.doctors
+    ADD CONSTRAINT doctors_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3066 (class 2606 OID 16421)
+-- Name: maladies maladies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.maladies
+    ADD CONSTRAINT maladies_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3064 (class 2606 OID 16410)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3070 (class 2606 OID 16444)
+-- Name: vaccins vaccins_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vaccins
+    ADD CONSTRAINT vaccins_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2022-09-01 08:20:49 GMT
+
+--
+-- PostgreSQL database dump complete
+--
+
